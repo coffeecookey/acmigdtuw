@@ -299,7 +299,7 @@ export default function HeroFloat({
         <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-12 w-full max-w-6xl px-6 md:px-12 py-24 md:py-0">
 
           {/* ── Copy side ────────────────────────────────── */}
-          <div className="hero-anim-copy flex-1 max-w-[530px] text-center md:text-left">
+          <div className="hero-anim-copy flex-1 max-w-530px text-center md:text-left">
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest mb-6"
@@ -380,7 +380,7 @@ export default function HeroFloat({
           </div>
 
           {/* ── Object stage ─────────────────────────────── */}
-          <div className="hero-anim-object flex-1 flex items-center justify-center relative min-h-[340px] md:min-h-[440px]">
+          <div className="hero-anim-object flex-1 flex items-center justify-center relative min-h-340px md:min-h-440px">
 
             {/* Scroll wrapper: translateY + scale + opacity on scroll */}
             <div ref={wrapperRef} className="relative" style={{ willChange: 'transform, opacity' }}>
