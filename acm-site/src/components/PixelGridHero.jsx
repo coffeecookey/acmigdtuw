@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import React from 'react'
 
 // ── Config ─────────────────────────────────────────────────────
 const RADIUS       = 20
@@ -15,7 +16,6 @@ export default function PixelGridHero({
   imageSrc     = '/acm-logo.svg',
   imageAlt     = 'ACM Logo',
   zoneSize     = 300,
-  eyebrow      = '',
   headline     = (<>Build the <span className="pgx-grad">Future</span><br/>of Computing</>),
   subtext      = 'Join a community of makers, builders, and thinkers. Explore cutting-edge projects, workshops, and events that push the boundaries of CS.',
   ctaPrimary   = { label: 'Join ACM →', href: '#join' },
@@ -299,22 +299,6 @@ export default function PixelGridHero({
             position: 'relative', zIndex: 1,
           }}
         >
-          <div className="pgx-in" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '6px 14px', borderRadius: 999, width: 'fit-content',
-            border: '1px solid rgba(0,130,170,0.3)',
-            background: 'rgba(0,130,170,0.06)',
-            color: '#0082aa',
-            fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.13em', textTransform: 'uppercase',
-            marginBottom: 24,
-          }}>
-            <span className="pgx-dot" style={{
-              display: 'inline-block', width: 6, height: 6, borderRadius: '50%',
-              background: '#0082aa', boxShadow: '0 0 8px rgba(0,130,170,0.6)',
-            }}/>
-            {eyebrow}
-          </div>
 
           <h1 className="pgx-in-2" style={{
             margin: 0,
@@ -404,23 +388,6 @@ export default function PixelGridHero({
             overflow: 'hidden',
           }}
         >
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '6px 14px', borderRadius: 999, width: 'fit-content',
-            border: '1px solid rgba(255,255,255,0.35)',
-            background: 'rgba(255,255,255,0.15)',
-            color: 'white',
-            fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.13em', textTransform: 'uppercase',
-            marginBottom: 24,
-          }}>
-            <span style={{
-              display: 'inline-block', width: 6, height: 6, borderRadius: '50%',
-              background: 'white',
-            }}/>
-            {eyebrow}
-          </div>
-
           <h1 style={{
             margin: 0,
             fontSize: 'clamp(32px, 4vw, 58px)',

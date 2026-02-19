@@ -44,7 +44,6 @@ export default function HeroFloat({
   imageAlt  = 'Floating object',
 
   /* ── Hero copy — customise for your brand ── */
-  eyebrow   = '',
   headline  = <>Build the <span className="grad-text">Future</span><br />of Computing</>,
   subtext   = 'Join a community of makers, builders, and thinkers. Explore cutting-edge projects, workshops, and events.',
   ctaPrimary  = { label: 'Join ACM →', href: '#' },
@@ -314,7 +313,6 @@ export default function HeroFloat({
                 className="badge-dot inline-block w-1.5 h-1.5 rounded-full"
                 style={{ background: '#00C2FF', boxShadow: '0 0 8px rgba(0,194,255,0.9)' }}
               />
-              {eyebrow}
             </div>
 
             {/* Headline */}

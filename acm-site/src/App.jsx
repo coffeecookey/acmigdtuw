@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar'
 import PixelGridHero from './components/PixelGridHero'
+import React from 'react'
 
 export default function App() {
   return (
@@ -9,11 +10,10 @@ export default function App() {
         imageSrc="/acm-logo.svg"
         imageAlt="ACM logo"
         zoneSize={300}
-        // {eyebrow=""}
-        headline={<>Build the <span className="pgx-grad">Future</span><br />of Computing</>}
-        subtext="Join a community of makers, builders, and thinkers. Explore cutting-edge projects, workshops, and events that push the boundaries of CS."
-        ctaPrimary={{ label: 'Join ACM →', href: '#join' }}
-        ctaSecondary={{ label: 'Explore Events', href: '#events' }}
+        headline={<>Welcome to <span className="pgx-grad">ACM IGDTUW</span><br /></>}
+        subtext="xxx"
+        ctaPrimary={{ label: 'POTD →', href: '#join' }}
+        ctaSecondary={{ label: 'Past Events', href: '#events' }}
       />
     </main>
   )
