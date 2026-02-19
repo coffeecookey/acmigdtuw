@@ -91,29 +91,6 @@ export default function Navbar() {
         }}
       >
         {/* Brand */}
-        <a
-          href="#"
-          style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', flexShrink: 0 }}
-        >
-          <div style={{
-            width: 36, height: 36, borderRadius: 10,
-            background: 'rgba(0,130,170,0.1)',
-            border: '1px solid rgba(0,130,170,0.25)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16, fontWeight: 900, color: '#0082aa',
-            boxShadow: '0 2px 8px rgba(0,130,170,0.1)',
-          }}>
-            ◆
-          </div>
-          <div>
-            <div style={{ fontWeight: 800, fontSize: 14, color: '#0d1117', lineHeight: 1.1, letterSpacing: '-0.025em' }}>
-              ACM IGDTUW
-            </div>
-            <div style={{ fontSize: 9.5, fontWeight: 600, color: 'rgba(0,0,0,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Student Chapter
-            </div>
-          </div>
-        </a>
 
         {/* Desktop links */}
         <div className="nb-links" style={{ display: 'flex', gap: 2, margin: '0 auto' }}>

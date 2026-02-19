@@ -229,10 +229,7 @@ export default function PixelGridHero({
     <>
       <style>{`
         .pgx-grad {
-          background: linear-gradient(95deg, #0082aa 0%, #00c2ff 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: #0082aa;
         }
         /* Inside the inverted layer, override gradient text to white */
         .pgx-inv .pgx-grad {
