@@ -146,7 +146,7 @@ export default function CTASection() {
           lineHeight: 1.75, margin: '0 0 40px', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto',
         }}>
           Join ACM IGDTUW and become part of a community that builds, competes,
-          and innovates together — turning ideas into impact.
+          and innovates together. We solve what matters.
         </p>
 
         {/* Benefits */}

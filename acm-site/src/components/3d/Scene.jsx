@@ -184,7 +184,7 @@ function drawGame(canvas, g) {
   if (!player && phase % 100 < 65) {
     ctx.fillStyle = 'rgba(0,212,255,0.5)'
     ctx.font = '8px "Courier New", monospace'
-    const label = '← → TAKE CONTROL'
+    const label = '← → TAKE CONTROL, USE ARROW KEYS TO PLAY'
     const w = ctx.measureText(label).width
     ctx.fillText(label, GW / 2 - w / 2, GH - 5)
   }

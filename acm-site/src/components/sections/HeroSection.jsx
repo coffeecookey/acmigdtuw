@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { setPlaying } from '../../lib/store'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -74,23 +75,22 @@ export default function HeroSection() {
       {/* Left content */}
       <div style={{ flex: '1 1 auto', maxWidth: '580px', position: 'relative', zIndex: 2 }}>
         {/* Badge */}
+        {/* this is for a small content bubble right above the left heading, I have removed it for now */}
         <div ref={badgeRef} style={{
           display: 'inline-flex', alignItems: 'center', gap: '8px',
-          background: 'rgba(0,130,170,0.12)',
-          border: '1px solid rgba(0,212,255,0.3)',
           borderRadius: '100px', padding: '6px 16px',
           marginBottom: '28px',
           color: '#00d4ff', fontSize: '11px',
           fontFamily: "'Courier New', monospace",
           letterSpacing: '0.12em', textTransform: 'uppercase',
         }}>
-          <span style={{
+          {/* <span style={{
             width: '6px', height: '6px', borderRadius: '50%',
             background: '#00d4ff', display: 'block',
             boxShadow: '0 0 8px #00d4ff',
             animation: 'acm-pulse 1.8s ease-in-out infinite',
           }} />
-          IGDTUW · Est. 2013
+          IGDTUW · Est. 2013 */}
         </div>
 
         {/* Headline */}
@@ -113,8 +113,7 @@ export default function HeroSection() {
           lineHeight: 1.75, margin: '0 0 38px',
           maxWidth: '460px',
         }}>
-          One of IGDTUW's oldest tech clubs — fostering a vibrant community
-          of innovators, builders, and curious minds pushing the boundaries of technology.
+          One of IGDTUW's oldest tech clubs, fostering a community of like minded geeks!
         </p>
 
         {/* CTA Buttons */}
@@ -180,7 +179,7 @@ export default function HeroSection() {
             borderTop: '1px solid rgba(255,255,255,0.07)',
           }}
         >
-          {stats.map(({ value, label }) => (
+          {/* {stats.map(({ value, label }) => (
             <div key={label}>
               <div style={{
                 fontSize: 'clamp(26px, 3.5vw, 38px)', fontWeight: 800,
@@ -197,7 +196,7 @@ export default function HeroSection() {
                 {label}
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 
@@ -221,9 +220,9 @@ export default function HeroSection() {
           style={{ width: '100%', height: 'auto' }}
         />
 
-        {/* Play hint — exits with logo on scroll, hidden by CSS when playing */}
-        <div
-          aria-hidden="true"
+        {/* Play button — exits with logo on scroll, hidden by CSS when playing */}
+        <button
+          onClick={() => setPlaying(true)}
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
             background: 'rgba(4,8,15,0.72)',
@@ -238,6 +237,16 @@ export default function HeroSection() {
             fontFamily: "'Courier New', monospace",
             whiteSpace: 'nowrap',
             animation: 'acm-fade-up 0.8s ease both 1s',
+            cursor: 'pointer',
+            transition: 'background 0.2s ease, border-color 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(0,130,170,0.18)'
+            e.currentTarget.style.borderColor = 'rgba(0,212,255,0.55)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(4,8,15,0.72)'
+            e.currentTarget.style.borderColor = 'rgba(0,212,255,0.28)'
           }}
         >
           <span style={{
@@ -253,7 +262,7 @@ export default function HeroSection() {
             boxShadow: '0 0 8px #00d4ff',
             animation: 'acm-pulse 1.6s ease-in-out infinite 0.5s',
           }} />
-        </div>
+        </button>
       </div>
 
       {/* Scroll indicator */}
