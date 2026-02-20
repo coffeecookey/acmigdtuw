@@ -8,4 +8,16 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'fx-vendor':    ['@react-three/postprocessing', 'postprocessing'],
+          'gsap-vendor':  ['gsap'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 800,
+  },
 })
