@@ -221,44 +221,77 @@ export default function PixelGridHero({
   const leftPad = {
     paddingTop:    'calc(64px + clamp(40px, 5vw, 88px))',
     paddingBottom: 'clamp(40px, 5vw, 88px)',
-    paddingLeft:   'clamp(28px, 4.5vw, 72px)',
+    paddingLeft:   'clamp(44px, 6vw, 96px)',
     paddingRight:  'clamp(28px, 4.5vw, 72px)',
   }
+
+  const STATS = [
+    { n: '200+', label: 'Members' },
+    { n: '50+',  label: 'Events'  },
+    { n: '20+',  label: 'Projects'},
+  ]
 
   return (
     <>
       <style>{`
-        .pgx-grad {
-          color: #0082aa;
-        }
-        /* Inside the inverted layer, override gradient text to white */
-        .pgx-inv .pgx-grad {
-          background: none;
-          -webkit-background-clip: unset;
-          background-clip: unset;
-          -webkit-text-fill-color: white;
-        }
+        .pgx-grad { color: #0082aa; }
+        .pgx-inv .pgx-grad { color: white; }
+
         @keyframes pgx-in {
-          from { opacity: 0; transform: translateY(22px); }
+          from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes pgx-blink {
-          0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+        @keyframes pgx-scrollline {
+          0%   { transform: scaleY(0); transform-origin: top center;    opacity: 0; }
+          25%  { transform: scaleY(1); transform-origin: top center;    opacity: 1; }
+          75%  { transform: scaleY(1); transform-origin: bottom center; opacity: 1; }
+          100% { transform: scaleY(0); transform-origin: bottom center; opacity: 0; }
         }
-        @keyframes pgx-bounce {
-          0%, 100% { transform: translateX(-50%) translateY(0); }
-          50%       { transform: translateX(-50%) translateY(7px); }
-        }
-        .pgx-in   { animation: pgx-in 0.9s cubic-bezier(0.16,1,0.3,1) both; }
-        .pgx-in-2 { animation: pgx-in 0.9s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
-        .pgx-in-3 { animation: pgx-in 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
-        .pgx-dot  { animation: pgx-blink 2.4s ease-in-out infinite; }
-        .pgx-scroll { animation: pgx-bounce 2.2s ease-in-out infinite; }
+        .pgx-in   { animation: pgx-in 1s cubic-bezier(0.16,1,0.3,1) both; }
+        .pgx-in-2 { animation: pgx-in 1s 0.12s cubic-bezier(0.16,1,0.3,1) both; }
+        .pgx-in-3 { animation: pgx-in 1s 0.22s cubic-bezier(0.16,1,0.3,1) both; }
+        .pgx-in-4 { animation: pgx-in 1s 0.34s cubic-bezier(0.16,1,0.3,1) both; }
         .pgx-hint { transition: opacity 0.6s ease; }
+        .pgx-scrollline { animation: pgx-scrollline 2.4s ease-in-out infinite; }
+
+        .pgx-btn-primary {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 13px 28px; border-radius: 12px;
+          font-size: 14px; font-weight: 700; color: #fff;
+          background: linear-gradient(135deg, #0082aa 0%, #005f7f 100%);
+          box-shadow: 0 4px 24px rgba(0,130,170,0.32), inset 0 1px 0 rgba(255,255,255,0.18);
+          text-decoration: none; letter-spacing: -0.01em;
+          transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .pgx-btn-primary:hover {
+          box-shadow: 0 10px 32px rgba(0,130,170,0.48), inset 0 1px 0 rgba(255,255,255,0.22);
+          transform: translateY(-2px);
+        }
+        .pgx-btn-primary:hover .pgx-arrow { transform: translateX(4px); }
+
+        .pgx-btn-secondary {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 13px 28px; border-radius: 12px;
+          font-size: 14px; font-weight: 600;
+          color: rgba(0,0,0,0.62);
+          border: 1px solid rgba(0,0,0,0.13);
+          text-decoration: none;
+          transition: border-color 0.18s, color 0.18s, background 0.18s, transform 0.18s;
+        }
+        .pgx-btn-secondary:hover {
+          border-color: rgba(0,130,170,0.45);
+          color: #0082aa;
+          background: rgba(0,130,170,0.04);
+          transform: translateY(-1px);
+        }
+        .pgx-arrow {
+          display: inline-block;
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
 
         @media (max-width: 768px) {
           .pgx-hero { min-height: auto !important; }
-          .pgx-left { width: 100% !important; }
+          .pgx-left { width: 100% !important; padding-left: 24px !important; padding-right: 24px !important; }
         }
       `}</style>
 
@@ -270,12 +303,61 @@ export default function PixelGridHero({
           display: 'flex',
           width: '100vw', minHeight: '100vh',
           paddingTop: 64,
-          background: '#ffffff',
+          background: '#fafafa',
           overflow: 'hidden',
           cursor: 'none',
           fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
         }}
       >
+
+        {/* ── Ambient glow orbs ──────────────────────────────── */}
+        <div aria-hidden="true" style={{
+          position: 'absolute', top: -160, right: -120,
+          width: 640, height: 640, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,130,170,0.09) 0%, transparent 65%)',
+          pointerEvents: 'none', zIndex: 0,
+        }}/>
+        <div aria-hidden="true" style={{
+          position: 'absolute', bottom: -80, left: '30%',
+          width: 500, height: 500, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,130,170,0.05) 0%, transparent 65%)',
+          pointerEvents: 'none', zIndex: 0,
+        }}/>
+
+        {/* ── Decorative concentric rings (logo center) ──────── */}
+        {[300, 420, 560].map((s, i) => (
+          <div key={s} aria-hidden="true" style={{
+            position: 'absolute',
+            top: '50%', left: '75%',
+            transform: 'translate(-50%, -50%)',
+            width: s, height: s, borderRadius: '50%',
+            border: `1px solid rgba(0,130,170,${0.11 - i * 0.03})`,
+            pointerEvents: 'none', zIndex: 0,
+          }}/>
+        ))}
+
+        {/* ── Subtle top rule ────────────────────────────────── */}
+        <div aria-hidden="true" style={{
+          position: 'absolute', top: 64, left: 0, right: 0,
+          height: 1, background: 'rgba(0,0,0,0.05)',
+          pointerEvents: 'none', zIndex: 0,
+        }}/>
+
+        {/* ── Left vertical label ────────────────────────────── */}
+        <div aria-hidden="true" style={{
+          position: 'absolute', left: 0, top: 64, bottom: 0,
+          width: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          pointerEvents: 'none', zIndex: 1,
+        }}>
+          <span style={{
+            transform: 'rotate(-90deg)',
+            fontSize: 9, fontWeight: 600,
+            letterSpacing: '0.22em', color: 'rgba(0,0,0,0.18)',
+            textTransform: 'uppercase', whiteSpace: 'nowrap',
+          }}>
+            ACM · Student Chapter · IGDTUW
+          </span>
+        </div>
 
         {/* Logo canvas — full section, logo drawn in right half */}
         <canvas ref={logoCanvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}/>
@@ -286,89 +368,65 @@ export default function PixelGridHero({
           style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', zIndex: 9 }}
         />
 
-        {/* ══ LEFT — normal text (dark on white) ══════════════ */}
+        {/* ══ LEFT — normal text (dark) ════════════════════════ */}
         <div
           className="pgx-left"
           style={{
             width: '50%',
             display: 'flex', flexDirection: 'column', justifyContent: 'center',
             padding: 'clamp(40px,5vw,88px) clamp(28px,4.5vw,72px)',
+            paddingLeft: 'clamp(44px, 6vw, 96px)',
             position: 'relative', zIndex: 1,
           }}
         >
-
-          <h1 className="pgx-in-2" style={{
+          <h1 className="pgx-in" style={{
             margin: 0,
-            fontSize: 'clamp(32px, 4vw, 58px)',
-            fontWeight: 800, lineHeight: 1.07, letterSpacing: '-0.032em',
-            color: '#0d1117', marginBottom: 20,
+            fontSize: 'clamp(40px, 5.5vw, 76px)',
+            fontWeight: 900, lineHeight: 1.02, letterSpacing: '-0.04em',
+            color: '#0d1117', marginBottom: 22,
           }}>
             {headline}
           </h1>
 
           <p className="pgx-in-2" style={{
-            margin: 0, marginBottom: 36,
-            fontSize: 'clamp(13px, 1.35vw, 16px)',
-            lineHeight: 1.78, color: 'rgba(0,0,0,0.52)', maxWidth: 400,
+            margin: 0, marginBottom: 32,
+            fontSize: 'clamp(13px, 1.3vw, 15.5px)',
+            lineHeight: 1.82, color: 'rgba(0,0,0,0.48)', maxWidth: 380,
+            fontWeight: 400,
           }}>
             {subtext}
           </p>
 
-          <div className="pgx-in-3" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a
-              href={ctaPrimary.href}
-              style={{
-                display: 'inline-flex', alignItems: 'center',
-                padding: '12px 26px', borderRadius: 10,
-                fontSize: 14, fontWeight: 700, color: '#fff',
-                background: 'linear-gradient(135deg, #0082aa, #005f7f)',
-                boxShadow: '0 4px 20px rgba(0,130,170,0.35), inset 0 1px 0 rgba(255,255,255,0.15)',
-                textDecoration: 'none',
-                transition: 'box-shadow .18s, transform .18s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.boxShadow = '0 8px 28px rgba(0,130,170,0.5), inset 0 1px 0 rgba(255,255,255,0.2)'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,130,170,0.35), inset 0 1px 0 rgba(255,255,255,0.15)'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-            >
+          <div className="pgx-in-3" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href={ctaPrimary.href} className="pgx-btn-primary">
               {ctaPrimary.label}
+              <span className="pgx-arrow">→</span>
             </a>
-            <a
-              href={ctaSecondary.href}
-              style={{
-                display: 'inline-flex', alignItems: 'center',
-                padding: '12px 26px', borderRadius: 10,
-                fontSize: 14, fontWeight: 600, color: 'rgba(0,0,0,0.65)',
-                border: '1px solid rgba(0,0,0,0.15)',
-                textDecoration: 'none',
-                transition: 'border-color .18s, color .18s, background .18s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(0,130,170,0.5)'
-                e.currentTarget.style.color = '#0082aa'
-                e.currentTarget.style.background = 'rgba(0,130,170,0.04)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'
-                e.currentTarget.style.color = 'rgba(0,0,0,0.65)'
-                e.currentTarget.style.background = 'transparent'
-              }}
-            >
+            <a href={ctaSecondary.href} className="pgx-btn-secondary">
               {ctaSecondary.label}
             </a>
           </div>
+
+          {/* Stats row */}
+          <div className="pgx-in-4" style={{
+            display: 'flex', gap: 0, marginTop: 40,
+            paddingTop: 28, borderTop: '1px solid rgba(0,0,0,0.07)',
+          }}>
+            {STATS.map(({ n, label }, i) => (
+              <div key={label} style={{
+                flex: 1,
+                paddingRight: i < 2 ? 20 : 0,
+                borderRight: i < 2 ? '1px solid rgba(0,0,0,0.07)' : 'none',
+                paddingLeft: i > 0 ? 20 : 0,
+              }}>
+                <div style={{ fontSize: 24, fontWeight: 800, color: '#0d1117', letterSpacing: '-0.04em', lineHeight: 1 }}>{n}</div>
+                <div style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.38)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 5 }}>{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* ══ Inverted layer — teal bg + white text, clips to cursor ══
-            Only covers left half. Clip-path is updated directly via ref
-            (no React state) so it follows the cursor with zero lag.
-            white bg  → reveals teal background = teal cursor ✓
-            dark text → white text shows through = white on teal  ✓
-            teal elem → white text on teal = readable ✓               */}
+        {/* ══ Inverted layer — teal bg + white text ════════════ */}
         <div
           ref={invertedLayerRef}
           className="pgx-inv"
@@ -387,37 +445,55 @@ export default function PixelGridHero({
         >
           <h1 style={{
             margin: 0,
-            fontSize: 'clamp(32px, 4vw, 58px)',
-            fontWeight: 800, lineHeight: 1.07, letterSpacing: '-0.032em',
-            color: 'white', marginBottom: 20,
+            fontSize: 'clamp(40px, 5.5vw, 76px)',
+            fontWeight: 900, lineHeight: 1.02, letterSpacing: '-0.04em',
+            color: 'white', marginBottom: 22,
           }}>
             {headline}
           </h1>
 
           <p style={{
-            margin: 0, marginBottom: 36,
-            fontSize: 'clamp(13px, 1.35vw, 16px)',
-            lineHeight: 1.78, color: 'rgba(255,255,255,0.85)', maxWidth: 400,
+            margin: 0, marginBottom: 32,
+            fontSize: 'clamp(13px, 1.3vw, 15.5px)',
+            lineHeight: 1.82, color: 'rgba(255,255,255,0.82)', maxWidth: 380,
           }}>
             {subtext}
           </p>
 
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
             <div style={{
-              display: 'inline-flex', alignItems: 'center',
-              padding: '12px 26px', borderRadius: 10,
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '13px 28px', borderRadius: 12,
               fontSize: 14, fontWeight: 700, color: '#0082aa', background: 'white',
             }}>
-              {ctaPrimary.label}
+              {ctaPrimary.label} <span>→</span>
             </div>
             <div style={{
               display: 'inline-flex', alignItems: 'center',
-              padding: '12px 26px', borderRadius: 10,
+              padding: '13px 28px', borderRadius: 12,
               fontSize: 14, fontWeight: 600, color: 'white',
-              border: '1px solid rgba(255,255,255,0.5)',
+              border: '1px solid rgba(255,255,255,0.4)',
             }}>
               {ctaSecondary.label}
             </div>
+          </div>
+
+          {/* Stats row — inverted */}
+          <div style={{
+            display: 'flex', gap: 0, marginTop: 40,
+            paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.2)',
+          }}>
+            {STATS.map(({ n, label }, i) => (
+              <div key={label} style={{
+                flex: 1,
+                paddingRight: i < 2 ? 20 : 0,
+                borderRight: i < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none',
+                paddingLeft: i > 0 ? 20 : 0,
+              }}>
+                <div style={{ fontSize: 24, fontWeight: 800, color: 'white', letterSpacing: '-0.04em', lineHeight: 1 }}>{n}</div>
+                <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 5 }}>{label}</div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -427,33 +503,39 @@ export default function PixelGridHero({
           style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: 1, height: 1 }}
         />
 
+        {/* Hover hint */}
         <div
           ref={hintRef}
           className="pgx-hint"
           aria-hidden="true"
           style={{
-            position: 'absolute', bottom: 20, right: '10%',
-            fontSize: 10, fontWeight: 600,
-            color: 'rgba(0,80,110,0.45)',
-            letterSpacing: '0.12em', textTransform: 'uppercase',
+            position: 'absolute', bottom: 22, right: '12%',
+            fontSize: 9.5, fontWeight: 600,
+            color: 'rgba(0,80,110,0.35)',
+            letterSpacing: '0.15em', textTransform: 'uppercase',
             pointerEvents: 'none', zIndex: 2, whiteSpace: 'nowrap',
           }}
         >
           hover to explore
         </div>
 
-        {/* Scroll chevron */}
+        {/* Scroll indicator — animated line */}
         <div
           aria-hidden="true"
-          className="pgx-scroll"
           style={{
-            position: 'absolute', bottom: 24, left: '25%',
-            opacity: 0.4, pointerEvents: 'none',
+            position: 'absolute', bottom: 28, left: 'clamp(44px, 6vw, 96px)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+            pointerEvents: 'none', zIndex: 1,
           }}
         >
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none">
-            <path d="M1 1L9 9L17 1" stroke="#0082aa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <span style={{
+            fontSize: 8.5, fontWeight: 700, letterSpacing: '0.22em',
+            color: 'rgba(0,0,0,0.22)', textTransform: 'uppercase',
+          }}>Scroll</span>
+          <div className="pgx-scrollline" style={{
+            width: 1, height: 44,
+            background: 'linear-gradient(to bottom, #0082aa, rgba(0,130,170,0))',
+          }}/>
         </div>
 
       </section>
