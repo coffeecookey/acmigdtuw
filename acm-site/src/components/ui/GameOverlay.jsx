@@ -3,69 +3,20 @@ import { setPlaying } from '../../lib/store'
 
 export default function GameOverlay() {
   const [playing, setPlayingState] = useState(false)
-  const [scrolled, setScrolled]    = useState(false)
 
-  /* Listen for play-mode changes and scroll */
   useEffect(() => {
-    const handler  = (e) => {
+    const handler = (e) => {
       setPlayingState(e.detail.playing)
       document.body.dataset.playing = e.detail.playing ? 'true' : 'false'
     }
-    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('acm-playing', handler)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('acm-playing', handler)
-      window.removeEventListener('scroll', onScroll)
-    }
+    return () => window.removeEventListener('acm-playing', handler)
   }, [])
 
   const goBack = () => setPlaying(false)
 
   return (
     <>
-      {/* ── Play hint — shown on hero when NOT in play mode and not scrolled ── */}
-      {!playing && !scrolled && (
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'fixed',
-            bottom: '88px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 200,
-            pointerEvents: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            background: 'rgba(4,8,15,0.72)',
-            border: '1px solid rgba(0,212,255,0.28)',
-            borderRadius: '100px',
-            padding: '9px 22px',
-            backdropFilter: 'blur(12px)',
-            color: '#00d4ff',
-            fontSize: '12px',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            fontFamily: "'Courier New', monospace",
-            animation: 'acm-fade-up 0.6s ease both',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          <span style={{
-            display: 'inline-block', width: '7px', height: '7px',
-            borderRadius: '50%', background: '#00d4ff',
-            boxShadow: '0 0 8px #00d4ff',
-          }} />
-          ← → Arrow keys to play Breakout
-          <span style={{
-            display: 'inline-block', width: '7px', height: '7px',
-            borderRadius: '50%', background: '#00d4ff',
-            boxShadow: '0 0 8px #00d4ff',
-          }} />
-        </div>
-      )}
-
       {/* ── Back button — shown when zoomed in to play ── */}
       {playing && (
         <>

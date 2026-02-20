@@ -201,7 +201,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ACM Logo — right side */}
+      {/* ACM Logo + play hint — right side */}
       <div
         ref={logoRef}
         style={{
@@ -210,8 +210,9 @@ export default function HeroSection() {
           marginLeft: 'auto',
           position: 'relative',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          gap: '20px',
         }}
       >
         <img
@@ -219,6 +220,40 @@ export default function HeroSection() {
           alt="ACM IGDTUW"
           style={{ width: '100%', height: 'auto' }}
         />
+
+        {/* Play hint — exits with logo on scroll, hidden by CSS when playing */}
+        <div
+          aria-hidden="true"
+          style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            background: 'rgba(4,8,15,0.72)',
+            border: '1px solid rgba(0,212,255,0.28)',
+            borderRadius: '100px',
+            padding: '7px 18px',
+            backdropFilter: 'blur(12px)',
+            color: '#00d4ff',
+            fontSize: '11px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            fontFamily: "'Courier New', monospace",
+            whiteSpace: 'nowrap',
+            animation: 'acm-fade-up 0.8s ease both 1s',
+          }}
+        >
+          <span style={{
+            display: 'inline-block', width: '6px', height: '6px',
+            borderRadius: '50%', background: '#00d4ff',
+            boxShadow: '0 0 8px #00d4ff',
+            animation: 'acm-pulse 1.6s ease-in-out infinite',
+          }} />
+          ← → Play Breakout
+          <span style={{
+            display: 'inline-block', width: '6px', height: '6px',
+            borderRadius: '50%', background: '#00d4ff',
+            boxShadow: '0 0 8px #00d4ff',
+            animation: 'acm-pulse 1.6s ease-in-out infinite 0.5s',
+          }} />
+        </div>
       </div>
 
       {/* Scroll indicator */}

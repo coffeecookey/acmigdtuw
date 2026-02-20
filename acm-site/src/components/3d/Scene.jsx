@@ -268,7 +268,15 @@ function GameBoy() {
 
   const game = useRef(createGameState())
 
-  // Keyboard input + play-mode transitions
+  // Drag-rotation state
+  const baseRotY  = useRef(0)   // accumulated Y rotation from drag
+  const baseRotX  = useRef(0)   // accumulated X rotation from drag
+  const velY      = useRef(0)   // inertia Y velocity
+  const velX      = useRef(0)   // inertia X velocity
+  const isDrag    = useRef(false)
+  const lastMouse = useRef({ x: 0, y: 0 })
+
+  // Keyboard + drag pointer events
   useEffect(() => {
     const g = game.current
 
@@ -285,11 +293,46 @@ function GameBoy() {
       if (['ArrowRight', 'd', 'D'].includes(e.key)) g.keys.right = false
     }
 
-    window.addEventListener('keydown', dn)
-    window.addEventListener('keyup',   up)
+    // Drag handlers — window-level so they work anywhere on the page
+    const pDown = (e) => {
+      if (store.playing) return
+      if (e.target.closest('button, a, input, select, textarea')) return
+      isDrag.current = true
+      const src = e.touches ? e.touches[0] : e
+      lastMouse.current = { x: src.clientX, y: src.clientY }
+      velY.current = 0
+      velX.current = 0
+    }
+    const pMove = (e) => {
+      if (!isDrag.current || store.playing) return
+      const src = e.touches ? e.touches[0] : e
+      const dx = (src.clientX - lastMouse.current.x) * 0.007
+      const dy = (src.clientY - lastMouse.current.y) * 0.004
+      velY.current = dx
+      velX.current = dy
+      baseRotY.current += dx
+      baseRotX.current = Math.max(-0.45, Math.min(0.45, baseRotX.current + dy))
+      lastMouse.current = { x: src.clientX, y: src.clientY }
+    }
+    const pUp = () => { isDrag.current = false }
+
+    window.addEventListener('keydown',    dn)
+    window.addEventListener('keyup',      up)
+    window.addEventListener('mousedown',  pDown)
+    window.addEventListener('mousemove',  pMove)
+    window.addEventListener('mouseup',    pUp)
+    window.addEventListener('touchstart', pDown, { passive: true })
+    window.addEventListener('touchmove',  pMove, { passive: true })
+    window.addEventListener('touchend',   pUp)
     return () => {
-      window.removeEventListener('keydown', dn)
-      window.removeEventListener('keyup',   up)
+      window.removeEventListener('keydown',    dn)
+      window.removeEventListener('keyup',      up)
+      window.removeEventListener('mousedown',  pDown)
+      window.removeEventListener('mousemove',  pMove)
+      window.removeEventListener('mouseup',    pUp)
+      window.removeEventListener('touchstart', pDown)
+      window.removeEventListener('touchmove',  pMove)
+      window.removeEventListener('touchend',   pUp)
     }
   }, [])
 
@@ -299,13 +342,26 @@ function GameBoy() {
     groupRef.current.scale.setScalar(Math.max(0.001, fade))
 
     if (store.playing) {
-      // Lock position/rotation for stable gameplay
+      // Snap rotation back to centre and lock for stable gameplay
+      baseRotY.current = THREE.MathUtils.lerp(baseRotY.current, 0, 0.07)
+      baseRotX.current = THREE.MathUtils.lerp(baseRotX.current, 0, 0.07)
+      velY.current *= 0.5
+      velX.current *= 0.5
       groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, 0, 0.09)
       groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, 0, 0.09)
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, 0, 0.09)
     } else {
-      // Gentle float + yaw
+      // Apply inertia when not dragging
+      if (!isDrag.current) {
+        velY.current *= 0.88
+        velX.current *= 0.88
+        baseRotY.current += velY.current
+        baseRotX.current = Math.max(-0.45, Math.min(0.45, baseRotX.current + velX.current))
+      }
+      // Floating position + drag-accumulated rotation + ambient yaw wobble
       groupRef.current.position.y = Math.sin(t * 0.55) * 0.08
-      groupRef.current.rotation.y = Math.sin(t * 0.16) * 0.06
+      groupRef.current.rotation.y = baseRotY.current + Math.sin(t * 0.16) * 0.06
+      groupRef.current.rotation.x = baseRotX.current
     }
 
     tickGame(game.current)

@@ -110,6 +110,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .scroll-progress-indicator { display: none !important; }
 }
 
+/* ── Drag cursor on the 3D canvas background ─────────────────── */
+body:not([data-playing="true"]) { cursor: grab; }
+body:not([data-playing="true"]):active { cursor: grabbing; }
+/* Restore pointer for all interactive elements */
+body a, body button, body input, body select, body textarea,
+body [role="button"], body label { cursor: pointer !important; }
+
 /* ── Play mode — hide HTML content when zoomed into game ─────── */
 body[data-playing="true"] main,
 body[data-playing="true"] nav {
