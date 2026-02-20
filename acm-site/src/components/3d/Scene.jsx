@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useRef, useMemo, Suspense, useEffect } from 'react'
 import * as THREE from 'three'
-import { Float, Grid } from '@react-three/drei'
+import { Grid } from '@react-three/drei'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import { BlendFunction, KernelSize } from 'postprocessing'
 import store, { setPlaying } from '../../lib/store'
@@ -548,33 +548,192 @@ function StarField({ count = 1600 }) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   FLOATING SHARDS
+   RETRO ENVIRONMENT — Y2K / PCB atmospheric background
+   Replaces: FloatingShapes
    ════════════════════════════════════════════════════════════ */
-const SHAPES = [
-  { pos: [-3.6, 1.2, -2.8],  col: '#0082aa', s: 0.22, sp: 1.1 },
-  { pos: [ 3.8, -1.0, -3.2], col: '#00d4ff', s: 0.18, sp: 0.85 },
-  { pos: [-2.8, -1.6, -1.5], col: '#7B4FFF', s: 0.16, sp: 1.45 },
-  { pos: [ 3.0,  2.2, -2.2], col: '#0082aa', s: 0.14, sp: 0.95 },
-  { pos: [ 0.5, -2.6, -2.5], col: '#00d4ff', s: 0.20, sp: 0.72 },
-  { pos: [-3.9,  0.5, -4.6], col: '#7B4FFF', s: 0.26, sp: 0.88 },
-  { pos: [ 3.9,  1.8, -4.2], col: '#0082aa', s: 0.19, sp: 1.25 },
-  { pos: [-1.4,  3.2, -3.9], col: '#00d4ff', s: 0.13, sp: 1.60 },
+
+// Utility: push a connected polyline as lineSegments vertex pairs
+function addPath(pts, z, out) {
+  for (let i = 0; i < pts.length - 1; i++) {
+    out.push(pts[i][0], pts[i][1], z, pts[i + 1][0], pts[i + 1][1], z)
+  }
+}
+
+// Orthogonal PCB-style circuit traces
+function CircuitTraces() {
+  const ref = useRef()
+  const geo = useMemo(() => {
+    const v = []
+    // Left cluster
+    addPath([[-4.8,1.8],[-4.0,1.8],[-4.0,0.8],[-2.8,0.8],[-2.8,1.8],[-1.8,1.8]], -5.5, v)
+    addPath([[-4.8,0.0],[-3.2,0.0],[-3.2,-1.2],[-4.8,-1.2],[-4.8,-2.0],[-2.4,-2.0]], -5.5, v)
+    addPath([[-5.0,1.0],[-3.5,1.0],[-3.5,0.2],[-2.2,0.2],[-2.2,1.8],[-0.8,1.8]], -7.5, v)
+    // Right cluster
+    addPath([[4.8,1.8],[4.0,1.8],[4.0,0.8],[2.8,0.8],[2.8,1.8],[1.5,1.8]], -5.5, v)
+    addPath([[3.5,-1.0],[3.0,-1.0],[3.0,0.2],[2.0,0.2],[2.0,-1.8],[0.5,-1.8]], -6.5, v)
+    addPath([[4.6,-0.5],[3.8,-0.5],[3.8,-1.6],[2.6,-1.6]], -8.0, v)
+    // Deep background
+    addPath([[-1.2,-3.2],[0.0,-3.2],[0.0,-2.4],[1.2,-2.4],[1.2,-3.8]], -8.5, v)
+    addPath([[-2.5,3.2],[-1.2,3.2],[-1.2,2.0],[0.2,2.0],[0.2,3.5],[2.4,3.5]], -9.5, v)
+    // Short via stubs
+    addPath([[-3.2,0.5],[-3.2,-0.2]], -6.5, v)
+    addPath([[2.8,-0.5],[2.8,-1.2]], -7.2, v)
+    const g = new THREE.BufferGeometry()
+    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(v), 3))
+    return g
+  }, [])
+
+  useFrame(() => {
+    if (ref.current) {
+      const fade = Math.max(0, 1 - store.scroll.progress * 3.5)
+      ref.current.material.opacity = fade * 0.09
+    }
+  })
+
+  return (
+    <lineSegments ref={ref} geometry={geo}>
+      <lineBasicMaterial color="#0082aa" transparent opacity={0.09} />
+    </lineSegments>
+  )
+}
+
+// Solder via dots at trace junctions
+function TraceVias() {
+  const ref = useRef()
+  const { pos, count } = useMemo(() => {
+    const pts = [
+      [-4.0,1.8,-5.5], [-4.0,0.8,-5.5], [-2.8,0.8,-5.5], [-2.8,1.8,-5.5],
+      [-3.2,0.0,-5.5], [-3.2,-1.2,-5.5], [-4.8,-1.2,-5.5],
+      [-3.5,1.0,-7.5], [-2.2,0.2,-7.5], [-2.2,1.8,-7.5],
+      [4.0,1.8,-5.5], [4.0,0.8,-5.5], [2.8,0.8,-5.5], [2.8,1.8,-5.5],
+      [3.0,-1.0,-6.5], [2.0,0.2,-6.5], [2.0,-1.8,-6.5],
+      [0.0,-2.4,-8.5], [1.2,-2.4,-8.5], [1.2,-3.8,-8.5],
+      [-1.2,2.0,-9.5], [0.2,2.0,-9.5], [0.2,3.5,-9.5],
+    ]
+    return { pos: new Float32Array(pts.flat()), count: pts.length }
+  }, [])
+
+  useFrame(() => {
+    if (ref.current) {
+      const fade = Math.max(0, 1 - store.scroll.progress * 3.5)
+      ref.current.material.opacity = fade * 0.16
+    }
+  })
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" array={pos} count={count} itemSize={3} />
+      </bufferGeometry>
+      <pointsMaterial color="#00d4ff" transparent opacity={0.16} size={0.058} sizeAttenuation />
+    </points>
+  )
+}
+
+// Wireframe CRT monitor / terminal window outlines
+const SCREEN_DEFS = [
+  { pos: [-4.2, 0.6, -7.2], w: 2.8, h: 2.0 },
+  { pos: [ 3.8, 0.8, -7.8], w: 2.5, h: 1.9 },
+  { pos: [-2.0,-2.4, -9.8], w: 1.9, h: 1.5 },
+  { pos: [ 1.8, 2.8, -9.2], w: 1.9, h: 1.5 },
+  { pos: [ 0.2,-1.8,-12.5], w: 3.4, h: 2.5 },
 ]
 
-function FloatingShapes() {
+function WireframeScreen({ def, index }) {
+  const ref = useRef()
+  const outerGeo = useMemo(() =>
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(def.w, def.h, 0.01)), [def.w, def.h])
+  const innerGeo = useMemo(() =>
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(def.w * 0.74, def.h * 0.68, 0.01)), [def.w, def.h])
+
+  useFrame(({ clock }) => {
+    if (!ref.current) return
+    const t = clock.elapsedTime
+    const fade = Math.max(0, 1 - store.scroll.progress * 3.5)
+    ref.current.position.x = def.pos[0] + Math.sin(t * 0.04 + index) * 0.05
+    ref.current.position.y = def.pos[1] + Math.cos(t * 0.03 + index * 1.3) * 0.04
+    ref.current.children.forEach((c, ci) => {
+      if (c.material) c.material.opacity = fade * (ci === 0 ? 0.07 : 0.04)
+    })
+  })
+
+  return (
+    <group ref={ref} position={def.pos}>
+      <lineSegments geometry={outerGeo}>
+        <lineBasicMaterial color="#0082aa" transparent opacity={0.07} />
+      </lineSegments>
+      <lineSegments geometry={innerGeo}>
+        <lineBasicMaterial color="#00d4ff" transparent opacity={0.04} />
+      </lineSegments>
+    </group>
+  )
+}
+
+function WireframeScreens() {
   return (
     <>
-      {SHAPES.map((s, i) => (
-        <Float key={i} speed={s.sp} rotationIntensity={0.9} floatIntensity={0.65}>
-          <mesh position={s.pos} scale={s.s}>
-            {i % 3 === 0 ? <octahedronGeometry  args={[1, 0]} />
-            : i % 3 === 1 ? <icosahedronGeometry args={[1, 0]} />
-            :               <tetrahedronGeometry args={[1, 0]} />}
-            <meshStandardMaterial color={s.col} metalness={0.9} roughness={0.08}
-              emissive={s.col} emissiveIntensity={0.45} transparent opacity={0.82} />
-          </mesh>
-        </Float>
+      {SCREEN_DEFS.map((def, i) => <WireframeScreen key={i} def={def} index={i} />)}
+    </>
+  )
+}
+
+// Binary digit patches — static canvas textures at depth
+function BinaryField() {
+  const planes = useMemo(() => {
+    const POSITIONS = [
+      [-4.8, 1.6, -7.2], [3.9, -0.8, -8.4], [-2.4, 3.2, -10.5],
+      [4.4, 2.4, -9.6],  [-0.8, -3.0, -11.5],
+    ]
+    return POSITIONS.map(([x, y, z], i) => {
+      const c = document.createElement('canvas')
+      c.width = 128; c.height = 80
+      const cx = c.getContext('2d')
+      cx.clearRect(0, 0, 128, 80)
+      cx.font = '9px "Courier New", monospace'
+      cx.fillStyle = '#0082aa'
+      for (let row = 0; row < 6; row++) {
+        let s = ''
+        for (let col = 0; col < 13; col++) s += Math.random() > 0.5 ? '1' : '0'
+        cx.fillText(s, 4, 12 + row * 12)
+      }
+      const tex = new THREE.CanvasTexture(c)
+      tex.minFilter = THREE.LinearFilter
+      return { pos: [x, y, z], tex, key: i }
+    })
+  }, [])
+
+  return (
+    <>
+      {planes.map(({ pos, tex, key }) => (
+        <BinaryPlane key={key} pos={pos} tex={tex} index={key} />
       ))}
+    </>
+  )
+}
+
+function BinaryPlane({ pos, tex, index }) {
+  const ref = useRef()
+  useFrame(({ clock }) => {
+    if (!ref.current) return
+    const fade = Math.max(0, 1 - store.scroll.progress * 3.2)
+    ref.current.material.opacity = fade * 0.05
+    ref.current.position.y = pos[1] + Math.sin(clock.elapsedTime * 0.07 + index * 1.4) * 0.1
+  })
+  return (
+    <mesh ref={ref} position={pos}>
+      <planeGeometry args={[1.6, 1.0]} />
+      <meshBasicMaterial map={tex} transparent opacity={0.05} depthWrite={false} />
+    </mesh>
+  )
+}
+
+function RetroEnvironment() {
+  return (
+    <>
+      <CircuitTraces />
+      <TraceVias />
+      <WireframeScreens />
+      <BinaryField />
     </>
   )
 }
@@ -639,7 +798,7 @@ export default function Scene() {
           <CameraController />
           <StarField count={isMobile ? 800 : 1600} />
           <GameBoy />
-          <FloatingShapes />
+          <RetroEnvironment />
           <CyberGrid />
 
           <EffectComposer>
