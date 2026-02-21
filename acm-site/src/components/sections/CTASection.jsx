@@ -5,12 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const benefits = [
-  { icon: '⬡', text: 'Access to exclusive workshops & bootcamps' },
-  { icon: '⬡', text: 'Mentorship from industry professionals' },
-  { icon: '⬡', text: 'Networking with 200+ tech-driven peers' },
-  { icon: '⬡', text: 'Priority access to hackathons & competitions' },
-  { icon: '⬡', text: 'Collaborative projects that build real skills' },
-  { icon: '⬡', text: 'Lifetime access to our alumni network' },
+  {text: 'Build projects and do research that matters' },
+  {text: 'Mentorship from seniors and professionals' },
+  {text: 'Networking with passionate, tech-driven peers' }
 ]
 
 export default function CTASection() {
@@ -126,7 +123,6 @@ export default function CTASection() {
           fontSize: '11px', letterSpacing: '0.14em',
           textTransform: 'uppercase', color: '#0082aa', marginBottom: '16px',
         }}>
-          Be part of the story
         </p>
 
         <h2 data-cta-item style={{
@@ -146,7 +142,9 @@ export default function CTASection() {
           lineHeight: 1.75, margin: '0 0 40px', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto',
         }}>
           Join ACM IGDTUW and become part of a community that builds, competes,
-          and innovates together. We solve what matters.
+          and innovates together. 
+
+          <p data-cta-item style={{ color: '#0082aa' }}>We solve what matters.</p>
         </p>
 
         {/* Benefits */}
@@ -235,13 +233,13 @@ export default function CTASection() {
           borderTop: '1px solid rgba(255,255,255,0.07)',
         }}>
           {[
-            { label: 'GitHub',    href: '#' },
-            { label: 'LinkedIn',  href: '#' },
-            { label: 'Instagram', href: '#' },
-            { label: 'Twitter',   href: '#' },
+            { label: 'GitHub',    href: 'https://github.com/acmigdtuw' },
+            { label: 'LinkedIn',  href: 'https://www.linkedin.com/company/acm-student-chapter-igdtuw/posts/?feedView=all' },
+            { label: 'Instagram', href: 'https://www.instagram.com/acm_igdtuw/' },
+            { label: 'X',   href: 'https://x.com/AcmIgdtuw' },
           ].map(({ label, href }) => (
             <a key={label} href={href} style={{
-              color: 'rgba(232,244,248,0.35)', fontSize: '12px',
+              color: 'rgba(232,244,248,0.8)', fontSize: '12px',
               textDecoration: 'none', letterSpacing: '0.06em',
               fontFamily: "'Courier New', monospace",
               transition: 'color 0.2s ease',
@@ -256,7 +254,7 @@ export default function CTASection() {
 
         {/* Footer note */}
         <p style={{
-          color: 'rgba(232,244,248,0.2)', fontSize: '11px',
+          color: 'rgba(232,244,248,0.8)', fontSize: '11px',
           marginTop: '32px', fontFamily: "'Courier New', monospace",
           letterSpacing: '0.06em',
         }}>

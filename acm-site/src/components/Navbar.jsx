@@ -112,7 +112,6 @@ export default function Navbar() {
             color: '#e8f4f8', fontWeight: 700, fontSize: '14px',
             letterSpacing: '-0.01em',
           }}>
-            ACM <span style={{ color: 'rgba(232,244,248,0.35)' }}>IGDTUW</span>
           </span>
         </a>
 

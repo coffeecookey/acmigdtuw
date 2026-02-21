@@ -5,12 +5,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const team = [
-  { name: 'Tanisha Ojha',    role: 'President',       initials: 'TO', color: '#0082aa' },
-  { name: 'Priya Sharma',    role: 'Vice President',  initials: 'PS', color: '#00d4ff' },
-  { name: 'Ananya Gupta',    role: 'Tech Lead',       initials: 'AG', color: '#7B4FFF' },
-  { name: 'Riya Verma',      role: 'Design Lead',     initials: 'RV', color: '#0082aa' },
-  { name: 'Sneha Kapoor',    role: 'Events Lead',     initials: 'SK', color: '#00d4ff' },
-  { name: 'Divya Nair',      role: 'Outreach Lead',   initials: 'DN', color: '#7B4FFF' },
+  { name: 'xxx',    role: 'President',       initials: 'initials', color: '#0082aa' },
+  { name: 'xxx',    role: 'Vice President',  initials: 'PS', color: '#00d4ff' },
+  { name: 'xxx',    role: 'Tech Lead',       initials: 'AG', color: '#7B4FFF' },
+  { name: 'xxx',      role: 'Design Lead',     initials: 'RV', color: '#0082aa' },
+  { name: 'xxx',    role: 'Events Lead',     initials: 'SK', color: '#00d4ff' },
+  { name: 'xxx',      role: 'Outreach Lead',   initials: 'DN', color: '#7B4FFF' },
 ]
 
 export default function TeamSection() {
@@ -166,7 +166,6 @@ export default function TeamSection() {
           color: 'rgba(232,244,248,0.35)', fontSize: '13px',
           fontFamily: "'Courier New', monospace", letterSpacing: '0.08em',
         }}>
-          + 190 more members in our community
         </div>
       </div>
     </section>

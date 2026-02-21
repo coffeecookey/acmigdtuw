@@ -59,8 +59,8 @@ export default function App() {
       <main style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection     />
         <AboutSection    />
-        <EventsSection   />
-        <ProjectsSection />
+        {/* <EventsSection   /> */}
+        {/* <ProjectsSection /> */}
         <TeamSection     />
         <CTASection      />
       </main>

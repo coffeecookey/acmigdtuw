@@ -6,27 +6,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 const pillars = [
   {
-    icon: '◈',
     title: 'Learn',
-    desc: 'Workshops, talks, and hands-on sessions on cutting‑edge technologies — from AI to systems programming.',
+    desc: 'Explore the latest frontiers in tech through dedicated sessions, workshops, and speaker events',
     color: '#0082aa',
   },
   {
-    icon: '◉',
     title: 'Build',
-    desc: 'Hackathons, project collaborations, and open-source contributions that create real-world impact.',
+    desc: 'Build what excites you. Build projects to learn, to explore, build to help others around you or build for fun!',
     color: '#00d4ff',
   },
   {
-    icon: '◌',
     title: 'Connect',
-    desc: 'A thriving network of students, alumni, and industry professionals who share your passion for tech.',
+    desc: 'Connect with a community of passionate and like-minded peers',
     color: '#7B4FFF',
   },
   {
-    icon: '◎',
     title: 'Compete',
-    desc: 'ICPC prep, competitive programming, and inter-college competitions to sharpen your problem-solving skills.',
+    desc: 'Show off your new tech skills in hackathons, coding contests and more',
     color: '#0082aa',
   },
 ]
@@ -107,7 +103,7 @@ export default function AboutSection() {
               textTransform: 'uppercase', color: '#0082aa',
               marginBottom: '16px',
             }}>
-              About us
+              About ACM
             </p>
             <h2 data-about-head style={{
               fontSize: 'clamp(36px, 5vw, 64px)',
@@ -130,18 +126,15 @@ export default function AboutSection() {
               color: 'rgba(232,244,248,0.72)', lineHeight: 1.8,
               marginBottom: '28px', maxWidth: '560px',
             }}>
-              ACM IGDTUW is the student chapter of the Association for Computing Machinery at
-              Indira Gandhi Delhi Technical University for Women. Since 2013, we have been
-              at the forefront of technical excellence — nurturing the next generation of
-              engineers, developers, and tech leaders.
+              The Association for Computing Machinery (ACM) is a U.S.-based international learned society for computing. It was founded in 1947 and is the world’s largest scientific and educational computing society. It is a not-for-profit professional membership group. Its membership is more than 100,000 as of 2011. Its headquarters are in New York City. As the world’s largest computing society, ACM strengthens the profession's collective voice through strong leadership, promotion of the highest standards, and recognition of technical excellence. ACM is organized into over 171 local chapters and 35 Special Interest Groups (SIGs), through which it conducts most of its activities. Additionally, there are over 500 college and university chapters. The first student chapter was founded in 1961 at the University of Louisiana at Lafayette.
             </p>
             <p style={{
               fontSize: 'clamp(14px, 1.5vw, 16px)',
               color: 'rgba(232,244,248,0.5)', lineHeight: 1.8, maxWidth: '540px',
             }}>
-              We run year-round programs including workshops, hackathons, coding contests,
-              and speaker sessions with industry experts — giving every member the tools
-              to learn, grow, and succeed in the world of computing.
+              ACM-IGDTUW runs many programs throughout the year, including workshops, hackathons, coding contests, research internships
+              and speaker sessions with industry experts. We aim to nurture ACM's core values within our tight-knit community, and create a community that gets 
+              gets excited about technology, innovation and learning together.
             </p>
           </div>
         </div>
