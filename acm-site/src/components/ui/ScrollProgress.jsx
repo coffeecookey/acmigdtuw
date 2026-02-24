@@ -48,7 +48,7 @@ export default function ScrollProgress() {
           style={{
             position: 'absolute', top: 0, left: 0,
             width: '100%', height: '100%',
-            background: 'linear-gradient(to bottom, #0082aa, #00d4ff)',
+            background: 'linear-gradient(to bottom, #0082aa, #00c4e0)',
             transformOrigin: 'top center',
             transform: 'scaleY(0)',
             borderRadius: '1px',
@@ -61,8 +61,8 @@ export default function ScrollProgress() {
             position: 'absolute', top: 0, left: '50%',
             transform: 'translate(-50%, 0)',
             width: '5px', height: '5px', borderRadius: '50%',
-            background: '#00d4ff',
-            boxShadow: '0 0 8px rgba(0,212,255,0.8)',
+            background: '#00c4e0',
+            boxShadow: '0 0 8px rgba(0,196,224,0.8)',
             marginLeft: '-2px',
           }}
         />

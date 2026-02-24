@@ -32,28 +32,28 @@ export default function GameOverlay() {
               alignItems: 'center',
               gap: '8px',
               background: 'rgba(4,8,15,0.88)',
-              border: '1px solid rgba(0,212,255,0.4)',
+              border: '1px solid rgba(0,196,224,0.4)',
               borderRadius: '10px',
               padding: '10px 20px',
-              color: '#00d4ff',
+              color: '#00c4e0',
               fontSize: '13px',
               fontWeight: 700,
               letterSpacing: '0.04em',
               fontFamily: 'Inter, system-ui, sans-serif',
               cursor: 'pointer',
               backdropFilter: 'blur(16px)',
-              boxShadow: '0 0 20px rgba(0,212,255,0.2)',
+              boxShadow: '0 0 20px rgba(0,196,224,0.2)',
               transition: 'all 0.2s ease',
               animation: 'acm-fade-up 0.35s ease both',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = 'rgba(0,130,170,0.25)'
-              e.currentTarget.style.boxShadow  = '0 0 32px rgba(0,212,255,0.4)'
+              e.currentTarget.style.boxShadow  = '0 0 32px rgba(0,196,224,0.4)'
               e.currentTarget.style.transform   = 'translateY(-2px)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'rgba(4,8,15,0.88)'
-              e.currentTarget.style.boxShadow  = '0 0 20px rgba(0,212,255,0.2)'
+              e.currentTarget.style.boxShadow  = '0 0 20px rgba(0,196,224,0.2)'
               e.currentTarget.style.transform   = 'translateY(0)'
             }}
           >
@@ -69,7 +69,7 @@ export default function GameOverlay() {
               right: '28px',
               zIndex: 1200,
               pointerEvents: 'none',
-              color: 'rgba(232,244,248,0.35)',
+              color: 'rgba(255,255,255,0.35)',
               fontSize: '11px',
               fontFamily: "'Courier New', monospace",
               letterSpacing: '0.1em',
@@ -91,7 +91,7 @@ export default function GameOverlay() {
               pointerEvents: 'none',
               display: 'flex',
               gap: '18px',
-              color: 'rgba(232,244,248,0.4)',
+              color: 'rgba(255,255,255,0.4)',
               fontSize: '11px',
               fontFamily: "'Courier New', monospace",
               letterSpacing: '0.08em',

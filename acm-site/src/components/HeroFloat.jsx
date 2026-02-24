@@ -27,8 +27,8 @@ const CFG = {
     sweepWidth: 24,    // % width of the sheen band
   },
   glow: {
-    color1: 'rgba(123,79,255,0.42)',   // inner glow color
-    color2: 'rgba(0,194,255,0.13)',    // mid glow color
+    color1: 'rgba(0,130,170,0.42)',    // inner glow color
+    color2: 'rgba(0,196,224,0.13)',    // mid glow color
   },
 }
 
@@ -146,8 +146,8 @@ export default function HeroFloat({
       const rimL = Math.max(0, Math.sin(rimAngle + Math.PI * 0.5)) * 0.38
       const rimR = Math.max(0, Math.sin(rimAngle - Math.PI * 0.5)) * 0.38
       rimEl.style.boxShadow = [
-        `${-5 - rimL * 14}px 0 ${14 + rimL * 26}px rgba(0,194,255,${(0.07 + rimL).toFixed(2)})`,
-        `${5  + rimR * 14}px 0 ${14 + rimR * 26}px rgba(123,79,255,${(0.07 + rimR).toFixed(2)})`,
+        `${-5 - rimL * 14}px 0 ${14 + rimL * 26}px rgba(0,196,224,${(0.07 + rimL).toFixed(2)})`,
+        `${5  + rimR * 14}px 0 ${14 + rimR * 26}px rgba(0,130,170,${(0.07 + rimR).toFixed(2)})`,
       ].join(',')
 
       /* ── Ambient glow pulse ──────────────────────────────  */
@@ -185,12 +185,12 @@ export default function HeroFloat({
         ctx.fillStyle = bg
         ctx.beginPath(); ctx.arc(160,160,155,0,Math.PI*2); ctx.fill()
 
-        ctx.strokeStyle = 'rgba(123,79,255,0.55)'
+        ctx.strokeStyle = 'rgba(0,130,170,0.55)'
         ctx.lineWidth = 1.5; ctx.stroke()
 
         const band = ctx.createLinearGradient(50,160,270,160)
-        band.addColorStop(0, 'rgba(123,79,255,0.9)')
-        band.addColorStop(1, 'rgba(0,194,255,0.9)')
+        band.addColorStop(0, 'rgba(0,130,170,0.9)')
+        band.addColorStop(1, 'rgba(0,196,224,0.9)')
         ctx.strokeStyle = band; ctx.lineWidth = 2.5
         ctx.beginPath(); ctx.moveTo(65,160); ctx.lineTo(255,160); ctx.stroke()
 
@@ -242,7 +242,7 @@ export default function HeroFloat({
       {/* Gradient text utility — injected once */}
       <style>{`
         .grad-text {
-          background: linear-gradient(95deg, #7B4FFF 0%, #00C2FF 100%);
+          background: linear-gradient(95deg, #0082aa 0%, #00c4e0 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -255,7 +255,7 @@ export default function HeroFloat({
       <section
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ background: '#060609' }}
+        style={{ background: '#04080f' }}
       >
         {/* ── Background layers ──────────────────────────── */}
         <div
@@ -263,8 +263,8 @@ export default function HeroFloat({
           className="absolute inset-0 pointer-events-none"
           style={{
             background: [
-              'radial-gradient(ellipse 90% 70% at 58% 44%, rgba(123,79,255,0.13) 0%, transparent 65%)',
-              'radial-gradient(ellipse 50% 38% at 78% 24%, rgba(0,194,255,0.07) 0%, transparent 55%)',
+              'radial-gradient(ellipse 90% 70% at 58% 44%, rgba(0,130,170,0.13) 0%, transparent 65%)',
+              'radial-gradient(ellipse 50% 38% at 78% 24%, rgba(0,196,224,0.07) 0%, transparent 55%)',
             ].join(','),
           }}
         />
@@ -289,7 +289,7 @@ export default function HeroFloat({
           className="absolute top-0 left-1/2 -translate-x-1/2 h-px pointer-events-none"
           style={{
             width: '680px',
-            background: 'linear-gradient(90deg, transparent 0%, rgba(123,79,255,0.7) 35%, rgba(0,194,255,0.7) 65%, transparent 100%)',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(0,130,170,0.7) 35%, rgba(0,196,224,0.7) 65%, transparent 100%)',
             filter: 'blur(0.4px)',
           }}
         />
@@ -303,15 +303,15 @@ export default function HeroFloat({
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest mb-6"
               style={{
-                color: '#00C2FF',
-                borderColor: 'rgba(0,194,255,0.22)',
-                background: 'rgba(0,194,255,0.06)',
+                color: '#00c4e0',
+                borderColor: 'rgba(0,196,224,0.22)',
+                background: 'rgba(0,196,224,0.06)',
                 letterSpacing: '0.13em',
               }}
             >
               <span
                 className="badge-dot inline-block w-1.5 h-1.5 rounded-full"
-                style={{ background: '#00C2FF', boxShadow: '0 0 8px rgba(0,194,255,0.9)' }}
+                style={{ background: '#00c4e0', boxShadow: '0 0 8px rgba(0,196,224,0.9)' }}
               />
             </div>
 
@@ -352,11 +352,11 @@ export default function HeroFloat({
                   padding: '13px 26px',
                   fontSize: '14px',
                   color: '#fff',
-                  background: 'linear-gradient(135deg, #7B4FFF 0%, #5a2dde 100%)',
-                  boxShadow: '0 0 24px rgba(123,79,255,0.28), inset 0 1px 0 rgba(255,255,255,0.12)',
+                  background: 'linear-gradient(135deg, #0082aa 0%, #005f7f 100%)',
+                  boxShadow: '0 0 24px rgba(0,130,170,0.28), inset 0 1px 0 rgba(255,255,255,0.12)',
                 }}
-                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 44px rgba(123,79,255,0.48), inset 0 1px 0 rgba(255,255,255,0.2)'}
-                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 24px rgba(123,79,255,0.28), inset 0 1px 0 rgba(255,255,255,0.12)'}
+                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 44px rgba(0,196,224,0.48), inset 0 1px 0 rgba(255,255,255,0.2)'}
+                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 24px rgba(0,130,170,0.28), inset 0 1px 0 rgba(255,255,255,0.12)'}
               >
                 {ctaPrimary.label}
               </a>
@@ -405,7 +405,7 @@ export default function HeroFloat({
                       style={{
                         zIndex: 2,
                         WebkitUserDrag: 'none',
-                        filter: 'drop-shadow(0 0 30px rgba(123,79,255,0.52))',
+                        filter: 'drop-shadow(0 0 30px rgba(0,130,170,0.52))',
                       }}
                     />
 

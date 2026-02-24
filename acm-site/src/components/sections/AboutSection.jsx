@@ -13,17 +13,17 @@ const pillars = [
   {
     title: 'Build',
     desc: 'Build what excites you. Build projects to learn, to explore, build to help others around you or build for fun!',
-    color: '#00d4ff',
+    color: '#00c4e0',
   },
   {
     title: 'Connect',
     desc: 'Connect with a community of passionate and like-minded peers',
-    color: '#7B4FFF',
+    color: '#0082aa',
   },
   {
     title: 'Compete',
     desc: 'Show off your new tech skills in hackathons, coding contests and more',
-    color: '#0082aa',
+    color: '#00c4e0',
   },
 ]
 
@@ -90,7 +90,7 @@ export default function AboutSection() {
         {/* Label */}
         <div data-about-bar style={{
           width: '48px', height: '2px', marginBottom: '22px',
-          background: 'linear-gradient(90deg, #0082aa, #00d4ff)',
+          background: 'linear-gradient(90deg, #0082aa, #00c4e0)',
           borderRadius: '2px',
         }} />
 
@@ -108,7 +108,7 @@ export default function AboutSection() {
             <h2 data-about-head style={{
               fontSize: 'clamp(36px, 5vw, 64px)',
               fontWeight: 800, lineHeight: 1.05,
-              letterSpacing: '-0.04em', color: '#e8f4f8',
+              letterSpacing: '-0.04em', color: '#ffffff',
               margin: 0,
             }}>
               Where<br />
@@ -123,14 +123,14 @@ export default function AboutSection() {
           <div data-about-sub style={{ flex: '2 1 320px' }}>
             <p style={{
               fontSize: 'clamp(15px, 1.7vw, 18px)',
-              color: 'rgba(232,244,248,0.72)', lineHeight: 1.8,
+              color: 'rgba(255,255,255,0.72)', lineHeight: 1.8,
               marginBottom: '28px', maxWidth: '560px',
             }}>
               The Association for Computing Machinery (ACM) is a U.S.-based international learned society for computing. It was founded in 1947 and is the world’s largest scientific and educational computing society. It is a not-for-profit professional membership group. Its membership is more than 100,000 as of 2011. Its headquarters are in New York City. As the world’s largest computing society, ACM strengthens the profession's collective voice through strong leadership, promotion of the highest standards, and recognition of technical excellence. ACM is organized into over 171 local chapters and 35 Special Interest Groups (SIGs), through which it conducts most of its activities. Additionally, there are over 500 college and university chapters. The first student chapter was founded in 1961 at the University of Louisiana at Lafayette.
             </p>
             <p style={{
               fontSize: 'clamp(14px, 1.5vw, 16px)',
-              color: 'rgba(232,244,248,0.5)', lineHeight: 1.8, maxWidth: '540px',
+              color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, maxWidth: '540px',
             }}>
               ACM-IGDTUW runs many programs throughout the year, including workshops, hackathons, coding contests, research internships
               and speaker sessions with industry experts. We aim to nurture ACM's core values within our tight-knit community, and create a community that gets 
@@ -177,14 +177,14 @@ export default function AboutSection() {
                 {p.icon}
               </div>
               <h3 style={{
-                color: '#e8f4f8', fontSize: '17px',
+                color: '#ffffff', fontSize: '17px',
                 fontWeight: 700, margin: '0 0 10px',
                 letterSpacing: '-0.01em',
               }}>
                 {p.title}
               </h3>
               <p style={{
-                color: 'rgba(232,244,248,0.5)',
+                color: 'rgba(255,255,255,0.5)',
                 fontSize: '14px', lineHeight: 1.65, margin: 0,
               }}>
                 {p.desc}

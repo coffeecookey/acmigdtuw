@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* ── Color palette ────────────────────────────────────────── */
+:root {
+  --c-bg:       #04080f;   /* near-black background             */
+  --c-surface:  #0b1922;   /* elevated card surface             */
+  --c-teal:     #0082aa;   /* ACM teal — primary accent         */
+  --c-teal-hi:  #00c4e0;   /* teal highlight / hover state      */
+  --c-teal-dk:  #005f7f;   /* dark teal — gradients / depth     */
+  --c-white:    #ffffff;   /* primary text / headings           */
+  --c-muted:    #5e7d8a;   /* secondary text, borders           */
+}
+
 /* ── Global reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,7 +25,7 @@ body {
   display: block;
   place-items: unset;
   background-color: #04080f;
-  color: #e8f4f8;
+  color: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,14 +35,14 @@ body {
 /* ── Selection ────────────────────────────────────────────── */
 ::selection {
   background: rgba(0, 130, 170, 0.35);
-  color: #e8f4f8;
+  color: #ffffff;
 }
 
 /* ── Scrollbar ────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #0082aa, #00d4ff);
+  background: linear-gradient(to bottom, #0082aa, #00c4e0);
   border-radius: 2px;
 }
 
@@ -46,7 +57,7 @@ body {
 /* Logo / orb ambient glow pulse */
 @keyframes acm-glow-pulse {
   0%, 100% { filter: drop-shadow(0 0 24px rgba(0,130,170,0.7)) drop-shadow(0 0 60px rgba(0,130,170,0.3)); }
-  50%       { filter: drop-shadow(0 0 40px rgba(0,212,255,0.9)) drop-shadow(0 0 90px rgba(0,130,170,0.5)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(0,196,224,0.9)) drop-shadow(0 0 90px rgba(0,130,170,0.5)); }
 }
 
 /* Spinning ring decorations */
@@ -82,15 +93,15 @@ body {
 
 /* ── Utility classes ──────────────────────────────────────── */
 .acm-gradient-text {
-  background-image: linear-gradient(135deg, #0082aa 0%, #00d4ff 60%, #7B4FFF 100%);
+  background-image: linear-gradient(135deg, #0082aa 0%, #00c4e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .acm-glass {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(11, 25, 34, 0.6);
+  border: 1px solid rgba(0, 130, 170, 0.12);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
@@ -100,7 +111,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid rgba(0, 212, 255, 0.6);
+  outline: 2px solid rgba(0, 196, 224, 0.6);
   outline-offset: 3px;
   border-radius: 4px;
 }

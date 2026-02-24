@@ -32,7 +32,7 @@ export default function Navbar() {
           border-radius: 8px;
           font-size: 13px;
           font-weight: 500;
-          color: rgba(232,244,248,0.58);
+          color: rgba(255,255,255,0.52);
           text-decoration: none;
           position: relative;
           transition: color 0.2s ease, background 0.2s ease;
@@ -42,13 +42,13 @@ export default function Navbar() {
           position: absolute;
           bottom: 4px; left: 14px; right: 14px;
           height: 1.5px; border-radius: 2px;
-          background: #00d4ff;
+          background: #00c4e0;
           transform: scaleX(0);
           transform-origin: center;
           transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
         }
         .nb-link:hover {
-          color: #00d4ff;
+          color: #00c4e0;
           background: rgba(0,130,170,0.08);
         }
         .nb-link:hover::after { transform: scaleX(1); }
@@ -65,7 +65,7 @@ export default function Navbar() {
         }
         .nb-join:hover {
           transform: translateY(-2px);
-          box-shadow: 0 0 32px rgba(0,212,255,0.55);
+          box-shadow: 0 0 32px rgba(0,196,224,0.5);
         }
 
         @media (max-width: 640px) {
@@ -109,7 +109,7 @@ export default function Navbar() {
             }}
           />
           <span style={{
-            color: '#e8f4f8', fontWeight: 700, fontSize: '14px',
+            color: '#ffffff', fontWeight: 700, fontSize: '14px',
             letterSpacing: '-0.01em',
           }}>
           </span>
@@ -136,8 +136,8 @@ export default function Navbar() {
               flexDirection: 'column', alignItems: 'center',
               justifyContent: 'center', gap: '5px',
               width: '38px', height: '38px', padding: 0,
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'rgba(0,130,170,0.08)',
+              border: '1px solid rgba(0,130,170,0.18)',
               borderRadius: '8px', cursor: 'pointer',
             }}
           >
@@ -146,7 +146,7 @@ export default function Navbar() {
                 display: 'block',
                 width: menuOpen && i === 1 ? 0 : '18px',
                 height: '1.5px', borderRadius: '2px',
-                background: '#e8f4f8',
+                background: '#ffffff',
                 transition: 'all 0.22s ease',
                 transform: menuOpen
                   ? (i === 0 ? 'translateY(6.5px) rotate(45deg)'
@@ -184,8 +184,8 @@ export default function Navbar() {
             style={{
               display: 'block', padding: '13px 0',
               fontSize: '15px', fontWeight: 500,
-              color: 'rgba(232,244,248,0.7)', textDecoration: 'none',
-              borderBottom: '1px solid rgba(255,255,255,0.06)',
+              color: 'rgba(255,255,255,0.65)', textDecoration: 'none',
+              borderBottom: '1px solid rgba(0,130,170,0.1)',
             }}
           >
             {label}

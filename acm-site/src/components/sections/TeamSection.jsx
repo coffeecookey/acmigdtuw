@@ -6,11 +6,11 @@ gsap.registerPlugin(ScrollTrigger)
 
 const team = [
   { name: 'xxx',    role: 'President',       initials: 'initials', color: '#0082aa' },
-  { name: 'xxx',    role: 'Vice President',  initials: 'PS', color: '#00d4ff' },
-  { name: 'xxx',    role: 'Tech Lead',       initials: 'AG', color: '#7B4FFF' },
-  { name: 'xxx',      role: 'Design Lead',     initials: 'RV', color: '#0082aa' },
-  { name: 'xxx',    role: 'Events Lead',     initials: 'SK', color: '#00d4ff' },
-  { name: 'xxx',      role: 'Outreach Lead',   initials: 'DN', color: '#7B4FFF' },
+  { name: 'xxx',    role: 'Vice President',  initials: 'PS', color: '#00c4e0' },
+  { name: 'xxx',    role: 'Tech Lead',       initials: 'AG', color: '#0082aa' },
+  { name: 'xxx',      role: 'Design Lead',     initials: 'RV', color: '#00c4e0' },
+  { name: 'xxx',    role: 'Events Lead',     initials: 'SK', color: '#0082aa' },
+  { name: 'xxx',      role: 'Outreach Lead',   initials: 'DN', color: '#00c4e0' },
 ]
 
 export default function TeamSection() {
@@ -61,7 +61,7 @@ export default function TeamSection() {
         <div data-team-head style={{ marginBottom: '52px', textAlign: 'center' }}>
           <div style={{
             width: '48px', height: '2px', margin: '0 auto 22px',
-            background: 'linear-gradient(90deg, #0082aa, #00d4ff)', borderRadius: '2px',
+            background: 'linear-gradient(90deg, #0082aa, #00c4e0)', borderRadius: '2px',
           }} />
           <p style={{
             fontFamily: "'Courier New', monospace",
@@ -72,7 +72,7 @@ export default function TeamSection() {
           </p>
           <h2 style={{
             fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 800,
-            lineHeight: 1.05, letterSpacing: '-0.04em', color: '#e8f4f8', margin: '0 0 16px',
+            lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff', margin: '0 0 16px',
           }}>
             The{' '}
             <span style={{ color: '#0082aa' }}>
@@ -81,7 +81,7 @@ export default function TeamSection() {
             {' '}Behind it All
           </h2>
           <p style={{
-            color: 'rgba(232,244,248,0.5)', fontSize: 'clamp(14px, 1.6vw, 17px)',
+            color: 'rgba(255,255,255,0.5)', fontSize: 'clamp(14px, 1.6vw, 17px)',
             maxWidth: '500px', margin: '0 auto', lineHeight: 1.7,
           }}>
             A passionate group of students driving innovation, events, and community at ACM IGDTUW.
@@ -143,7 +143,7 @@ export default function TeamSection() {
               {/* Name + role */}
               <div>
                 <div style={{
-                  color: '#e8f4f8', fontWeight: 700, fontSize: '15px',
+                  color: '#ffffff', fontWeight: 700, fontSize: '15px',
                   letterSpacing: '-0.01em', marginBottom: '5px',
                 }}>
                   {member.name}
@@ -163,7 +163,7 @@ export default function TeamSection() {
         {/* "Join the team" hint */}
         <div style={{
           textAlign: 'center', marginTop: '48px',
-          color: 'rgba(232,244,248,0.35)', fontSize: '13px',
+          color: 'rgba(255,255,255,0.35)', fontSize: '13px',
           fontFamily: "'Courier New', monospace", letterSpacing: '0.08em',
         }}>
         </div>

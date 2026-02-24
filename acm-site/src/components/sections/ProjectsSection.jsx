@@ -20,7 +20,7 @@ const projects = [
     subtitle: 'Student Platform',
     desc: 'A full-stack community platform integrating events, clubs, mentorship matching, and collaborative workspaces for 3,000+ students.',
     tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    color: '#00d4ff',
+    color: '#00c4e0',
     link: '#',
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     subtitle: 'Competitive Programming Tool',
     desc: 'Browser extension that overlays complexity analysis, test-case generation, and editorial hints directly on Codeforces and LeetCode.',
     tags: ['TypeScript', 'Chrome API', 'GPT-4', 'Redis'],
-    color: '#7B4FFF',
+    color: '#0082aa',
     link: '#',
   },
 ]
@@ -87,7 +87,7 @@ export default function ProjectsSection() {
         <div data-proj-head style={{ marginBottom: '56px' }}>
           <div style={{
             width: '48px', height: '2px', marginBottom: '22px',
-            background: 'linear-gradient(90deg, #0082aa, #00d4ff)', borderRadius: '2px',
+            background: 'linear-gradient(90deg, #0082aa, #00c4e0)', borderRadius: '2px',
           }} />
           <p style={{
             fontFamily: "'Courier New', monospace",
@@ -98,7 +98,7 @@ export default function ProjectsSection() {
           </p>
           <h2 style={{
             fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 800,
-            lineHeight: 1.05, letterSpacing: '-0.04em', color: '#e8f4f8', margin: 0,
+            lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff', margin: 0,
           }}>
             Featured{' '}
             <span style={{ color: '#0082aa' }}>
@@ -172,7 +172,7 @@ export default function ProjectsSection() {
                       {proj.subtitle}
                     </p>
                     <h3 style={{
-                      color: '#e8f4f8', fontSize: 'clamp(20px, 2.5vw, 28px)',
+                      color: '#ffffff', fontSize: 'clamp(20px, 2.5vw, 28px)',
                       fontWeight: 800, margin: '0 0 14px', letterSpacing: '-0.03em',
                     }}>
                       {proj.title}
@@ -200,7 +200,7 @@ export default function ProjectsSection() {
                 </div>
 
                 <p style={{
-                  color: 'rgba(232,244,248,0.55)', fontSize: 'clamp(13px, 1.4vw, 15px)',
+                  color: 'rgba(255,255,255,0.55)', fontSize: 'clamp(13px, 1.4vw, 15px)',
                   lineHeight: 1.72, margin: '0 0 20px', maxWidth: '560px',
                 }}>
                   {proj.desc}
@@ -211,7 +211,7 @@ export default function ProjectsSection() {
                     <span key={tag} style={{
                       background: 'rgba(255,255,255,0.04)',
                       border: '1px solid rgba(255,255,255,0.08)',
-                      color: 'rgba(232,244,248,0.6)',
+                      color: 'rgba(255,255,255,0.6)',
                       padding: '4px 11px', borderRadius: '6px',
                       fontSize: '11px', letterSpacing: '0.04em',
                       fontFamily: "'Courier New', monospace",

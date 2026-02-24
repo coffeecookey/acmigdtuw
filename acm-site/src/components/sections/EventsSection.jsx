@@ -15,7 +15,7 @@ const events = [
   },
   {
     tag: 'Hackathon',
-    tagColor: '#00d4ff',
+    tagColor: '#00c4e0',
     date: 'Aug 2024',
     title: 'HackIGDTUW \'24',
     desc: '24-hour hackathon with industry mentors, exciting prize pools, and challenges spanning AI, Web3, and sustainability.',
@@ -23,7 +23,7 @@ const events = [
   },
   {
     tag: 'Workshop',
-    tagColor: '#7B4FFF',
+    tagColor: '#005f7f',
     date: 'Sep 2024',
     title: 'ML Workshop Series',
     desc: 'Six-session hands-on deep dive into machine learning — from foundations to deploying production-ready models.',
@@ -87,7 +87,7 @@ export default function EventsSection() {
         <div data-ev-head style={{ marginBottom: '52px' }}>
           <div style={{
             width: '48px', height: '2px', marginBottom: '22px',
-            background: 'linear-gradient(90deg, #0082aa, #00d4ff)', borderRadius: '2px',
+            background: 'linear-gradient(90deg, #0082aa, #00c4e0)', borderRadius: '2px',
           }} />
           <p style={{
             fontFamily: "'Courier New', monospace",
@@ -99,7 +99,7 @@ export default function EventsSection() {
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
             <h2 style={{
               fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 800,
-              lineHeight: 1.05, letterSpacing: '-0.04em', color: '#e8f4f8', margin: 0,
+              lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff', margin: 0,
             }}>
               Featured{' '}
               <span style={{ color: '#0082aa' }}>
@@ -167,7 +167,7 @@ export default function EventsSection() {
                   {ev.tag}
                 </span>
                 <span style={{
-                  color: 'rgba(232,244,248,0.35)', fontSize: '11px',
+                  color: 'rgba(255,255,255,0.35)', fontSize: '11px',
                   fontFamily: "'Courier New', monospace",
                 }}>
                   {ev.date}
@@ -176,7 +176,7 @@ export default function EventsSection() {
 
               {/* Title */}
               <h3 style={{
-                color: '#e8f4f8', fontSize: '18px', fontWeight: 700,
+                color: '#ffffff', fontSize: '18px', fontWeight: 700,
                 margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.3,
               }}>
                 {ev.title}
@@ -184,7 +184,7 @@ export default function EventsSection() {
 
               {/* Desc */}
               <p style={{
-                color: 'rgba(232,244,248,0.5)', fontSize: '13px',
+                color: 'rgba(255,255,255,0.5)', fontSize: '13px',
                 lineHeight: 1.7, margin: '0 0 22px',
               }}>
                 {ev.desc}
@@ -199,14 +199,14 @@ export default function EventsSection() {
                   {[0,1,2].map(j => (
                     <div key={j} style={{
                       width: '20px', height: '20px', borderRadius: '50%',
-                      background: `hsl(${190 + j * 30}, 80%, 40%)`,
+                      background: `hsl(${192 + j * 8}, 60%, 35%)`,
                       border: '2px solid rgba(4,8,15,0.8)',
                       marginLeft: j > 0 ? '-6px' : '0',
                     }} />
                   ))}
                 </div>
                 <span style={{
-                  color: 'rgba(232,244,248,0.45)', fontSize: '12px',
+                  color: 'rgba(255,255,255,0.45)', fontSize: '12px',
                   fontFamily: "'Courier New', monospace",
                 }}>
                   {ev.participants} attended

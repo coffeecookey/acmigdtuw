@@ -15,7 +15,7 @@ const PADDLE_SPEED = 5.5
 const BRICK_ROWS = 5, BRICK_COLS = 8
 const BRICK_W = 36, BRICK_H = 14
 
-const ROW_COLORS = ['#0082aa', '#00a8cc', '#00d4ff', '#7B4FFF', '#5533cc']
+const ROW_COLORS = ['#0082aa', '#00a8cc', '#00c4e0', '#005f7f', '#004a60']
 
 function createGameState() {
   const bricks = []
@@ -134,8 +134,8 @@ function drawGame(canvas, g) {
   ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(GW, 14); ctx.stroke()
   ctx.font = 'bold 8px "Courier New", monospace'
   ctx.fillStyle = '#0082aa'; ctx.fillText(`SCORE ${score}`, 6, 10)
-  ctx.fillStyle = '#00d4ff'; ctx.fillText(`LV ${level}`, GW / 2 - 10, 10)
-  ctx.fillStyle = '#7B4FFF'; ctx.fillText('♥'.repeat(lives), GW - 52, 10)
+  ctx.fillStyle = '#00c4e0'; ctx.fillText(`LV ${level}`, GW / 2 - 10, 10)
+  ctx.fillStyle = '#00c4e0'; ctx.fillText('♥'.repeat(lives), GW - 52, 10)
 
   // Bricks
   for (const b of bricks) {
@@ -159,8 +159,8 @@ function drawGame(canvas, g) {
 
   // Paddle
   const pg = ctx.createLinearGradient(paddle.x, 0, paddle.x + paddle.w, 0)
-  pg.addColorStop(0, '#005070'); pg.addColorStop(0.5, '#00d4ff'); pg.addColorStop(1, '#005070')
-  ctx.shadowBlur = 10; ctx.shadowColor = '#00d4ff'
+  pg.addColorStop(0, '#005070'); pg.addColorStop(0.5, '#00c4e0'); pg.addColorStop(1, '#005070')
+  ctx.shadowBlur = 10; ctx.shadowColor = '#00c4e0'
   ctx.fillStyle = pg; ctx.fillRect(paddle.x, paddle.y, paddle.w, paddle.h)
   ctx.shadowBlur = 0
   ctx.fillStyle = 'rgba(255,255,255,0.25)'
@@ -168,12 +168,12 @@ function drawGame(canvas, g) {
 
   // Ball glow
   const bg = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, 16)
-  bg.addColorStop(0, 'rgba(0,212,255,0.4)'); bg.addColorStop(1, 'rgba(0,212,255,0)')
+  bg.addColorStop(0, 'rgba(0,196,224,0.4)'); bg.addColorStop(1, 'rgba(0,196,224,0)')
   ctx.beginPath(); ctx.arc(ball.x, ball.y, 16, 0, Math.PI * 2)
   ctx.fillStyle = bg; ctx.fill()
   // Ball core
   ctx.beginPath(); ctx.arc(ball.x, ball.y, BALL_R, 0, Math.PI * 2)
-  ctx.shadowBlur = 12; ctx.shadowColor = '#00d4ff'
+  ctx.shadowBlur = 12; ctx.shadowColor = '#00c4e0'
   ctx.fillStyle = '#fff'; ctx.fill(); ctx.shadowBlur = 0
 
   // Outer border
@@ -182,7 +182,7 @@ function drawGame(canvas, g) {
 
   // Idle blink hint (only when AI is playing)
   if (!player && phase % 100 < 65) {
-    ctx.fillStyle = 'rgba(0,212,255,0.5)'
+    ctx.fillStyle = 'rgba(0,196,224,0.5)'
     ctx.font = '8px "Courier New", monospace'
     const label = '← → TAKE CONTROL, USE ARROW KEYS TO PLAY'
     const w = ctx.measureText(label).width
@@ -625,7 +625,7 @@ function TraceVias() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" array={pos} count={count} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial color="#00d4ff" transparent opacity={0.16} size={0.058} sizeAttenuation />
+      <pointsMaterial color="#00c4e0" transparent opacity={0.16} size={0.058} sizeAttenuation />
     </points>
   )
 }
@@ -663,7 +663,7 @@ function WireframeScreen({ def, index }) {
         <lineBasicMaterial color="#0082aa" transparent opacity={0.07} />
       </lineSegments>
       <lineSegments geometry={innerGeo}>
-        <lineBasicMaterial color="#00d4ff" transparent opacity={0.04} />
+        <lineBasicMaterial color="#00c4e0" transparent opacity={0.04} />
       </lineSegments>
     </group>
   )
@@ -771,7 +771,7 @@ function SceneLights() {
     <>
       <ambientLight intensity={0.07} />
       <pointLight ref={l1} intensity={3.5} color="#0082aa" distance={14} decay={2} />
-      <pointLight ref={l2} intensity={2.2} color="#7B4FFF" distance={14} decay={2} />
+      <pointLight ref={l2} intensity={2.2} color="#00c4e0" distance={14} decay={2} />
       <pointLight position={[0, 6, 3]}  intensity={1.2} color="#ffffff" distance={20} decay={2} />
       <pointLight position={[0, -4, 0]} intensity={0.8} color="#0082aa" distance={12} decay={2} />
     </>

@@ -46,8 +46,8 @@ export default function CustomCursor() {
         const scale = isHovering ? 1.8 : 1
         ringRef.current.style.transform = `translate(${rx - 20}px, ${ry - 20}px) scale(${scale})`
         ringRef.current.style.borderColor = isHovering
-          ? 'rgba(0,212,255,0.9)'
-          : 'rgba(0,212,255,0.45)'
+          ? 'rgba(0,196,224,0.9)'
+          : 'rgba(0,196,224,0.45)'
       }
       raf = requestAnimationFrame(animate)
     }
@@ -69,10 +69,10 @@ export default function CustomCursor() {
         ref={dotRef}
         style={{
           position: 'fixed', width: '8px', height: '8px',
-          borderRadius: '50%', background: '#00d4ff',
+          borderRadius: '50%', background: '#00c4e0',
           pointerEvents: 'none', zIndex: 99999,
           willChange: 'transform', mixBlendMode: 'screen',
-          boxShadow: '0 0 12px rgba(0,212,255,0.8)',
+          boxShadow: '0 0 12px rgba(0,196,224,0.8)',
           top: 0, left: 0,
         }}
       />
@@ -81,7 +81,7 @@ export default function CustomCursor() {
         ref={ringRef}
         style={{
           position: 'fixed', width: '40px', height: '40px',
-          borderRadius: '50%', border: '1.5px solid rgba(0,212,255,0.45)',
+          borderRadius: '50%', border: '1.5px solid rgba(0,196,224,0.45)',
           pointerEvents: 'none', zIndex: 99998,
           willChange: 'transform', top: 0, left: 0,
           transition: 'border-color 0.3s ease, transform 0.3s ease',
