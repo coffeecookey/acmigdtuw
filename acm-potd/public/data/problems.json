@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "id": "spring-2026",
+      "name": "Spring 2026",
+      "isActive": true,
+      "phases": {
+        "beginner":     { "startDate": "2026-01-01", "endDate": "2026-01-31" },
+        "intermediate": { "startDate": "2026-02-01", "endDate": "2026-02-28" },
+        "advanced":     { "startDate": "2026-03-01", "endDate": "2026-03-31" }
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "sp26-b-1",
+      "eventId": "spring-2026",
+      "phase": "beginner",
+      "day": 1,
+      "date": "2026-01-01",
+      "title": "Two Sum",
+      "difficulty": "Easy",
+      "problemLink": "https://leetcode.com/problems/two-sum/",
+      "solutionLink": "",
+      "status": "published"
+    }
+  ]
+}

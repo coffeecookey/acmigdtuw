@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ── Palette (mirrors acm-site) ───────────────────────────── */
+:root {
+  --c-bg:       #04080f;
+  --c-surface:  #0b1922;
+  --c-teal:     #0082aa;
+  --c-teal-hi:  #00c4e0;
+  --c-teal-dk:  #005f7f;
+  --c-white:    #ffffff;
+  --c-muted:    #5e7d8a;
+  --c-border:   rgba(255,255,255,0.07);
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-white);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+::selection { background: rgba(0,130,170,0.35); color: #fff; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #0082aa, #00c4e0);
+  border-radius: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(0,196,224,0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+a, button { -webkit-tap-highlight-color: transparent; }
+
+/* ── Shared component classes ─────────────────────────────── */
+
+.potd-card {
+  background: var(--c-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.potd-card:hover {
+  border-color: rgba(0,130,170,0.28);
+  box-shadow: 0 4px 24px rgba(0,130,170,0.07);
+}
+.potd-card.today {
+  border-color: rgba(0,196,224,0.35);
+  box-shadow: 0 0 0 1px rgba(0,196,224,0.1), 0 4px 32px rgba(0,130,170,0.12);
+}
+
+.potd-btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 9px;
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: linear-gradient(135deg, #0082aa 0%, #005f7f 100%);
+  text-decoration: none; white-space: nowrap;
+  transition: box-shadow 0.2s, transform 0.15s;
+  font-family: inherit;
+}
+.potd-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(0,130,170,0.38);
+  transform: translateY(-1px);
+}
+
+.potd-btn-secondary {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 9px;
+  font-size: 13px; font-weight: 600;
+  color: rgba(240,247,251,0.65);
+  border: 1px solid rgba(255,255,255,0.1);
+  text-decoration: none; white-space: nowrap;
+  background: transparent;
+  transition: border-color 0.18s, color 0.18s, background 0.18s, transform 0.15s;
+  font-family: inherit; cursor: pointer;
+}
+.potd-btn-secondary:hover {
+  border-color: rgba(0,196,224,0.4);
+  color: #00c4e0;
+  background: rgba(0,130,170,0.08);
+  transform: translateY(-1px);
+}
+
+.potd-tab {
+  padding: 7px 16px; border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.42);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.18s; cursor: pointer;
+  background: transparent; font-family: inherit;
+  white-space: nowrap;
+}
+.potd-tab:hover {
+  color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.04);
+}
+.potd-tab.active {
+  color: #00c4e0;
+  background: rgba(0,196,224,0.1);
+  border-color: rgba(0,196,224,0.25);
+}
+
+.potd-select {
+  background: var(--c-surface);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; border-radius: 9px;
+  padding: 8px 14px;
+  font-size: 13px; font-weight: 500;
+  font-family: inherit; cursor: pointer;
+  appearance: none;
+  transition: border-color 0.18s;
+}
+.potd-select:hover, .potd-select:focus {
+  border-color: rgba(0,196,224,0.4);
+  outline: none;
+}
+
+@keyframes potd-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 5px #00c4e0; }
+  50%       { opacity: 0.45; box-shadow: 0 0 2px #00c4e0; }
+}
+.potd-live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #00c4e0; flex-shrink: 0;
+  animation: potd-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes potd-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.potd-fade-up { animation: potd-fade-up 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Accordion ────────────────────────────────────────────── */
+
+/* CSS grid trick: animates height without JS measurement */
+.potd-accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s cubic-bezier(0.16,1,0.3,1);
+}
+.potd-accordion-body.open {
+  grid-template-rows: 1fr;
+}
+.potd-accordion-body > div {
+  overflow: hidden;
+}
+
+.potd-accordion-header {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 18px 22px;
+  background: transparent; border: none;
+  cursor: pointer; font-family: inherit;
+  text-align: left;
+  transition: background 0.18s;
+}
+.potd-accordion-header:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.potd-accordion-chevron {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 6px;
+  color: var(--c-muted); flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), color 0.18s;
+}
+.potd-accordion-chevron.open {
+  transform: rotate(180deg);
+  color: var(--c-teal-hi);
+}
+
+.potd-accordion-section {
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.potd-accordion-section:has(.potd-accordion-header:hover),
+.potd-accordion-section.open {
+  border-color: rgba(0,130,170,0.22);
+}
