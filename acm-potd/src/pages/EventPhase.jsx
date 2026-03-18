@@ -80,7 +80,7 @@ export default function EventPhase() {
       {/* Accordion — one section per phase */}
       {PHASES.every(({ id }) => getProblems(eventId, id).length === 0) && (
         <p style={{ fontSize: 13, color: 'var(--c-muted)', textAlign: 'center', padding: '48px 0' }}>
-          Problems coming soon — check back daily once the event starts.
+          Problems coming soon - check back daily once the event starts.
         </p>
       )}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

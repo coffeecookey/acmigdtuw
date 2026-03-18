@@ -1,5 +1,5 @@
 // Copy acm-logo.svg from acm-site/public/ into potd/public/
-const MAIN_SITE_URL = 'https://acmigdtuw.com'
+const MAIN_SITE_URL = 'https://acmigdtuw.github.io/acmigdtuw/'
 
 export default function Navbar() {
   return (

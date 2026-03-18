@@ -61,7 +61,7 @@ export default function App() {
       <main style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection />
         <AboutSection />
-        {/* <EventsSection /> */}
+        <EventsSection />
         {/* <ProjectsSection /> */}
         <FacultySection />
         <TeamSection />

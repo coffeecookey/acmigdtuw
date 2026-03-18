@@ -176,7 +176,7 @@ export default function CTASection() {
         {/* CTA Buttons */}
         <div data-cta-item style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
-            href="https://forms.gle/join"
+            href="https://www.acm.org/"
             data-cta-btn
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '10px',
@@ -197,10 +197,10 @@ export default function CTASection() {
               background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)',
               animation: 'acm-shimmer 3s linear infinite',
             }} />
-            Join ACM IGDTUW →
+            Visit ACM.org →
           </a>
           <a
-            href="mailto:acm@igdtuw.ac.in"
+            href="mailto:acmigdtuwexcomm@gmail.com"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '10px',
               background: 'rgba(255,255,255,0.04)',

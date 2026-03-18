@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 const NAV_LINKS = [
   { label: 'About',    href: '#about'    },
   { label: 'Events',   href: '#events'   },
-  { label: 'Projects', href: '#projects' },
   { label: 'Faculty',  href: '#faculty'  },
   { label: 'Team',     href: '#team'     },
   { label: 'Alumni',   href: '#alumni'   },
@@ -54,22 +53,6 @@ export default function Navbar() {
           background: rgba(0,130,170,0.08);
         }
         .nb-link:hover::after { transform: scaleX(1); }
-
-
-        .nb-join {
-          padding: 8px 20px;
-          border-radius: 9px;
-          font-size: 13px; font-weight: 700;
-          background: linear-gradient(135deg, #0082aa, #005f7f);
-          color: #fff; text-decoration: none;
-          box-shadow: 0 0 20px rgba(0,130,170,0.38);
-          transition: transform 0.18s ease, box-shadow 0.18s ease;
-          letter-spacing: 0.02em;
-        }
-        .nb-join:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0 32px rgba(0,196,224,0.5);
-        }
 
         @media (max-width: 640px) {
           .nb-links  { display: none !important; }
@@ -127,8 +110,6 @@ export default function Navbar() {
 
         {/* Right */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-          <a href="#join" className="nb-join">Join Us</a>
-
           {/* Hamburger */}
           <button
             className="nb-burger"
@@ -194,19 +175,6 @@ export default function Navbar() {
             {label}
           </a>
         ))}
-        <a
-          href="#join"
-          onClick={() => setMenuOpen(false)}
-          style={{
-            display: 'block', marginTop: '16px',
-            padding: '13px', borderRadius: '10px', textAlign: 'center',
-            background: 'linear-gradient(135deg, #0082aa, #005f7f)',
-            color: '#fff', fontSize: '15px', fontWeight: 700,
-            textDecoration: 'none',
-          }}
-        >
-          Join Us
-        </a>
       </div>
     </>
   )
