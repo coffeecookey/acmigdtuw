@@ -112,7 +112,7 @@ export default function CTASection() {
         marginBottom: '36px',
         position: 'relative', zIndex: 2,
       }}>
-        <img src="/acm-logo.svg" alt="ACM IGDTUW" style={{ width: '100%', height: 'auto' }} />
+        <img src={`${import.meta.env.BASE_URL}acm-logo.svg`} alt="ACM IGDTUW" style={{ width: '100%', height: 'auto' }} />
       </div>
 
       {/* Content */}

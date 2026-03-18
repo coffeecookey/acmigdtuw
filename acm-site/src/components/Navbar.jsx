@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 const NAV_LINKS = [
   { label: 'About',    href: '#about'    },
   { label: 'Events',   href: '#events'   },
+  { label: 'Faculty',  href: '#faculty'  },
   { label: 'Team',     href: '#team'     },
   { label: 'Alumni',   href: '#alumni'   },
 ]
@@ -86,7 +87,7 @@ export default function Navbar() {
         {/* Logo / brand */}
         <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
           <img
-            src="/acm-logo.svg"
+            src={`${import.meta.env.BASE_URL}acm-logo.svg`}
             alt="ACM"
             style={{
               height: '30px', width: 'auto',

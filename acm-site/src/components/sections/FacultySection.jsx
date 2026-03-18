@@ -43,6 +43,7 @@ export default function FacultySection() {
 
   return (
     <section
+      id="faculty"
       ref={sectionRef}
       style={{
         minHeight: '100vh',

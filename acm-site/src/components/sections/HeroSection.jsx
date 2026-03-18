@@ -220,7 +220,7 @@ export default function HeroSection() {
         }}
       >
         <img
-          src="/acm-logo.svg"
+          src={`${import.meta.env.BASE_URL}acm-logo.svg`}
           alt="ACM IGDTUW"
           style={{ width: '100%', height: 'auto' }}
         />

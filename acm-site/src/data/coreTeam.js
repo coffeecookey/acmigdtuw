@@ -9,7 +9,7 @@ export const coreTeamGroups = [
         year: 2026,
         initials: 'SP',
         color: '#0082aa',
-        image: '/2025-2026/shriya%20panda.jpg',
+        image: '2025-2026/shriya%20panda.jpg',
         linkedin: 'https://www.linkedin.com/in/shriya-p-63097825a/',
       },
       {
@@ -19,7 +19,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'VS',
         color: '#00c4e0',
-        image: '/2025-2026/vanshika.jpg',
+        image: '2025-2026/vanshika.jpg',
         linkedin: 'https://www.linkedin.com/in/vanshika-sehrawat/',
       },
       {
@@ -29,7 +29,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'DS',
         color: '#0082aa',
-        image: '/2025-2026/diya%20sindhu.jpeg',
+        image: '2025-2026/diya%20sindhu.jpeg',
         linkedin: 'https://www.linkedin.com/in/diya-sindhu-066981285/',
       },
       {
@@ -39,7 +39,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'IG',
         color: '#00c4e0',
-        image: '/2025-2026/ishita.PNG',
+        image: '2025-2026/ishita.PNG',
         linkedin: 'https://www.linkedin.com/in/ishita-gupta-87b49b206/',
       },
     ],
@@ -54,7 +54,7 @@ export const coreTeamGroups = [
         year: 2028,
         initials: 'RA',
         color: '#00c4e0',
-        image: '/2025-2026/rabbika.jpg',
+        image: '2025-2026/rabbika.jpg',
         linkedin: 'https://www.linkedin.com/in/rabbika-azmi/',
       },
       {
@@ -64,7 +64,7 @@ export const coreTeamGroups = [
         year: 2028,
         initials: 'TO',
         color: '#00c4e0',
-        image: '/2025-2026/tanisha.jpg',
+        image: '2025-2026/tanisha.jpg',
         linkedin: 'https://www.linkedin.com/in/tanisha-ojha-6bb1b0203/',
       },
       {
@@ -74,7 +74,7 @@ export const coreTeamGroups = [
         year: 2028,
         initials: 'SS',
         color: '#0082aa',
-        image: '/2025-2026/Shreya.jpg',
+        image: '2025-2026/Shreya.jpg',
         linkedin: 'https://www.linkedin.com/in/shreya-srivastava-780341314/',
       },
       {
@@ -84,7 +84,7 @@ export const coreTeamGroups = [
         year: 2028,
         initials: 'RY',
         color: '#0082aa',
-        image: '/2025-2026/rashmi.jpg',
+        image: '2025-2026/rashmi.jpg',
         linkedin: 'https://www.linkedin.com/in/rashmi-y-47976131b/',
       },
       {
@@ -104,7 +104,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'PS',
         color: '#00c4e0',
-        image: '/2025-2026/pranati.png',
+        image: '2025-2026/pranati.png',
         linkedin: 'https://www.linkedin.com/in/pranati--sharma/',
       },
       {
@@ -114,7 +114,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'RM',
         color: '#00c4e0',
-        image: '/2025-2026/rupashi.png',
+        image: '2025-2026/rupashi.png',
         linkedin: 'https://www.linkedin.com/in/rupashi-maurya/',
       },
       {
@@ -124,7 +124,7 @@ export const coreTeamGroups = [
         year: 2027,
         initials: 'DM',
         color: '#0082aa',
-        image: '/2025-2026/durgameena.png',
+        image: '2025-2026/durgameena.png',
         linkedin: 'https://www.linkedin.com/in/durga-meena-/',
       },
     ],

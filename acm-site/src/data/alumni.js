@@ -5,7 +5,7 @@ export const alumni = [
     year: '2024-2025',
     initials: 'AG',
     color: '#0082aa',
-    image: '/past-alumni/aishvi.png',
+    image: 'past-alumni/aishvi.png',
     linkedin: 'https://www.linkedin.com/in/aishvi-guleria-09a04222b/',
   },
   {
@@ -14,7 +14,7 @@ export const alumni = [
     year: 2025,
     initials: 'SS',
     color: '#00c4e0',
-    image: '/past-alumni/shreyasinghal.png',
+    image: 'past-alumni/shreyasinghal.png',
     linkedin: 'https://www.linkedin.com/in/singhalshreya003/',
   },
   {
@@ -23,7 +23,7 @@ export const alumni = [
     year: 2023,
     initials: 'AS',
     color: '#0082aa',
-    image: '/past-alumni/anjali.png',
+    image: 'past-alumni/anjali.png',
     linkedin: 'https://www.linkedin.com/in/anjali-singh-282001/',
   },
   {
@@ -32,7 +32,7 @@ export const alumni = [
     year: 2024,
     initials: 'MG',
     color: '#00c4e0',
-    image: '/past-alumni/muskan.png',
+    image: 'past-alumni/muskan.png',
     linkedin: 'https://www.linkedin.com/in/muskan-gupta-a05523204/',
   },
   {
@@ -41,7 +41,7 @@ export const alumni = [
     year: 2024,
     initials: 'N',
     color: '#0082aa',
-    image: '/past-alumni/nancy.png',
+    image: 'past-alumni/nancy.png',
     linkedin: 'https://www.linkedin.com/in/nancy-/',
   },
   {
@@ -50,7 +50,7 @@ export const alumni = [
     year: 2024,
     initials: 'RS',
     color: '#00c4e0',
-    image: '/past-alumni/rochita.png',
+    image: 'past-alumni/rochita.png',
     linkedin: 'https://www.linkedin.com/in/rochita-sharma/',
   },
   {
@@ -59,7 +59,7 @@ export const alumni = [
     year: 2025,
     initials: 'AK',
     color: '#0082aa',
-    image: '/past-alumni/aditi.png',
+    image: 'past-alumni/aditi.png',
     linkedin: 'https://www.linkedin.com/in/aditi-kesarwani-893928228/',
   },
   {
@@ -68,7 +68,7 @@ export const alumni = [
     year: 2025,
     initials: 'GV',
     color: '#0082aa',
-    image: '/past-alumni/geetika.png',
+    image: 'past-alumni/geetika.png',
     linkedin: 'https://www.linkedin.com/in/geetika-vadali/',
   },
   {
@@ -77,7 +77,7 @@ export const alumni = [
     year: 2025,
     initials: 'DC',
     color: '#00c4e0',
-    image: '/past-alumni/deepti.png',
+    image: 'past-alumni/deepti.png',
     linkedin: 'https://www.linkedin.com/in/deepti-chhabra-627a04237/',
   },
   {
@@ -86,7 +86,7 @@ export const alumni = [
     year: 2025,
     initials: 'NB',
     color: '#0082aa',
-    image: '/past-alumni/nidhi.png',
+    image: 'past-alumni/nidhi.png',
     linkedin: 'https://www.linkedin.com/in/nidhi-bhatt-beruf/',
   },
   {
@@ -95,7 +95,7 @@ export const alumni = [
     year: 2025,
     initials: 'MDR',
     color: '#00c4e0',
-    image: '/past-alumni/deekshitha.png',
+    image: 'past-alumni/deekshitha.png',
     linkedin: '',
   },
   {
@@ -104,7 +104,7 @@ export const alumni = [
     year: 2025,
     initials: 'SS',
     color: '#0082aa',
-    image: '/past-alumni/srimayee.png',
+    image: 'past-alumni/srimayee.png',
     linkedin: 'https://www.linkedin.com/in/srimayee-satapathy-915bb0227/',
   },
   {
@@ -113,7 +113,7 @@ export const alumni = [
     year: 2025,
     initials: 'TV',
     color: '#00c4e0',
-    image: '/past-alumni/trishla.png',
+    image: 'past-alumni/trishla.png',
     linkedin: 'https://www.linkedin.com/in/trishla-vagrecha/',
   },
   {
@@ -122,7 +122,7 @@ export const alumni = [
     year: 2025,
     initials: 'SG',
     color: '#0082aa',
-    image: '/past-alumni/sanya.png',
+    image: 'past-alumni/sanya.png',
     linkedin: 'https://www.linkedin.com/in/sanya-gupta-1a422b24a/',
   },
   {
@@ -140,7 +140,7 @@ export const alumni = [
     year: 2025,
     initials: 'AS',
     color: '#0082aa',
-    image: '/past-alumni/aarna.png',
+    image: 'past-alumni/aarna.png',
     linkedin: 'https://www.linkedin.com/in/aarnasinghal/',
   },
   {
@@ -149,7 +149,7 @@ export const alumni = [
     year: 2026,
     initials: 'MS',
     color: '#00c4e0',
-    image: '/past-alumni/mehak.png',
+    image: 'past-alumni/mehak.png',
     linkedin: 'https://www.linkedin.com/in/mehak1sharma/',
   },
   {
@@ -158,7 +158,7 @@ export const alumni = [
     year: 2026,
     initials: 'SB',
     color: '#0082aa',
-    image: '/past-alumni/saachi.png',
+    image: 'past-alumni/saachi.png',
     linkedin: 'https://www.linkedin.com/in/saachi-bansal/',
   },
   {
@@ -167,7 +167,7 @@ export const alumni = [
     year: 2026,
     initials: 'AP',
     color: '#00c4e0',
-    image: '/past-alumni/astha.png',
+    image: 'past-alumni/astha.png',
     linkedin: 'https://www.linkedin.com/in/astha-panda-286964256/',
   },
   {
@@ -176,7 +176,7 @@ export const alumni = [
     year: 2026,
     initials: 'AA',
     color: '#0082aa',
-    image: '/past-alumni/anshika.png',
+    image: 'past-alumni/anshika.png',
     linkedin: 'https://www.linkedin.com/in/anshika-arora-91b3361ba/',
   },
   {
@@ -185,7 +185,7 @@ export const alumni = [
     year: 2026,
     initials: 'AA',
     color: '#00c4e0',
-    image: '/past-alumni/aayushi.png',
+    image: 'past-alumni/aayushi.png',
     linkedin: 'https://www.linkedin.com/in/aayushiaacharya/',
   },
   {
@@ -203,7 +203,7 @@ export const alumni = [
     year: 2026,
     initials: 'DK',
     color: '#00c4e0',
-    image: '/past-alumni/drishti.png',
+    image: 'past-alumni/drishti.png',
     linkedin: 'https://www.linkedin.com/in/drishti-katyal-813722259/',
   },
   {
@@ -212,7 +212,7 @@ export const alumni = [
     year: 2026,
     initials: 'SK',
     color: '#0082aa',
-    image: '/past-alumni/samyah.png',
+    image: 'past-alumni/samyah.png',
     linkedin: 'https://www.linkedin.com/in/samyah-khan-577474253/',
   },
 ]
