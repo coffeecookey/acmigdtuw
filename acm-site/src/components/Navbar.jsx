@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 const NAV_LINKS = [
   { label: 'About',    href: '#about'    },
   { label: 'Events',   href: '#events'   },
-  { label: 'Projects', href: '#projects' },
   { label: 'Faculty',  href: '#faculty'  },
   { label: 'Team',     href: '#team'     },
   { label: 'Alumni',   href: '#alumni'   },
