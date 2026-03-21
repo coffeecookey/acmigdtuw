@@ -5,7 +5,7 @@
       "name": "Spring 2026",
       "isActive": true,
       "phases": {
-        "beginner":     { "startDate": "2026-03-21", "endDate": "2026-04-25" },
+        "beginner":     { "startDate": "2026-03-22", "endDate": "2026-04-25" },
         "intermediate": { "startDate": "2026-02-01", "endDate": "2026-02-28" },
         "advanced":     { "startDate": "2026-03-01", "endDate": "2026-03-31" }
       }
@@ -17,7 +17,7 @@
       "eventId": "spring-2026",
       "phase": "beginner",
       "day": 1,
-      "date": "2026-01-01",
+      "date": "2026-03-22",
       "title": "Remove Duplicates from Sorted Array",
       "difficulty": "Easy",
       "problemLink": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
