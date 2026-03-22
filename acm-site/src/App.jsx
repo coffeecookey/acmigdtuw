@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Analytics } from "@vercel/analytics/next"
 
 import store             from './lib/store'
 import Navbar            from './components/Navbar'
@@ -53,6 +54,7 @@ export default function App() {
       <ScrollProgress />
       <GameOverlay />
       <Navbar />
+      <Analytics />
 
       {/* Fixed 3D universe — pointer-events: none inside Scene */}
       <Scene />
